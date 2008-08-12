@@ -12,10 +12,10 @@ namespace EpicRPG.Managers
     {
         public void loadGameConfiguration(){
             //TODO: look at game config file, load necessary configurations
-            this.ReadConfigurationFile("../../../Configuration/EpicRPG/EntityConfiguration.xml");
+            this.ReadConfigurationFile("GameConfiguration.xml");
 
             foreach(string file in ConfigurationManager.getInstance().configurationFiles){
-                this.ReadConfigurationFile(File);
+                this.ReadConfigurationFile(file);
             }
         }
 

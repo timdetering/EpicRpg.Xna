@@ -18,12 +18,34 @@ namespace EpicRPG
     /// </summary>
     public class EpicRPG : Microsoft.Xna.Framework.Game
     {
+        private static EpicRPG instance;
+        public static EpicRPG getInstance(){
+            if(instance == null){
+                //we have a problem
+                //TODO: anything?
+            }
 
+            return instance;
+        }
+        
         private State.GameState gameState;
+
+        public State.GameState CurrentState{
+            get{ 
+                return (this.gameState == State.GameState.IN_PLAY_BATTLE || 
+                        this.gameState == State.GameState.IN_PLAY_NORMAL ? 
+                            State.GameState.IN_PLAY 
+                            : this.gameState
+                       );
+            }
+
+            set{ this.gameState = value; }
+        }
 
         public EpicRPG()
         {
-            GraphicsManager.getInstance().initializeGraphics(this);
+            instance = this;
+            OutputManager.getInstance().initializeGraphics(this);
             Content.RootDirectory = "Content";
 
             this.gameState = State.GameState.INITIALIZING;
@@ -50,7 +72,7 @@ namespace EpicRPG
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            GraphicsManager.getInstance().initializeSpriteBatch(GraphicsDevice);
+            OutputManager.getInstance().initializeSpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
@@ -102,7 +124,7 @@ namespace EpicRPG
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsManager.getInstance().Draw(gameTime);
+            OutputManager.getInstance().Draw(gameTime);
 
             base.Draw(gameTime);
         }

@@ -22,6 +22,7 @@ namespace EpicRPG.Entities
             this.health = new Attribute(health, health);
             this.mana = new Attribute(mana, mana);
             this.strength = strength;
+            this.components = new List<BaseComponent>();
         }
 
         public void addComponent(BaseComponent bc){

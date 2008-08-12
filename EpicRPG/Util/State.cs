@@ -9,6 +9,7 @@ namespace EpicRPG.Util
         public enum GameState{
             INITIALIZING,
             MAIN_MENU,
+            IN_PLAY,        //in case we need a generic playstate
             IN_PLAY_NORMAL,
             IN_PLAY_BATTLE,
             PAUSE,

@@ -13,6 +13,9 @@ namespace EpicRPG.Managers
         public bool PLAY_BG_MUSIC = true;
         #endregion
 
+        private string configRoot = "Configuration";
+        private string configScheme = "EpicRPG";
+
         public List<string> configurationFiles;
 
         public void setConfigurationSetting(string setting, string value)
@@ -21,7 +24,7 @@ namespace EpicRPG.Managers
             {
                 case "CONFIGURATIONFILE":
                     if (this.configurationFiles == null) this.configurationFiles = new List<string>();
-                    this.configurationFiles.Add(value);
+                    this.configurationFiles.Add(this.configRoot + "/" + this.configScheme + "/" + value);
                     break;
 
                 case "AUDIOENABLED":

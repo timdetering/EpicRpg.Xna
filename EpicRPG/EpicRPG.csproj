@@ -86,7 +86,7 @@
     <Compile Include="Util\AudioSet.cs" />
     <Compile Include="Util\GraphicsSet.cs" />
     <Compile Include="Util\Singleton.cs" />
-    <Compile Include="Managers\GraphicsManager.cs" />
+    <Compile Include="Managers\OutputManager.cs" />
     <Compile Include="Managers\WorldManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
@@ -94,11 +94,19 @@
     <Compile Include="Util\State.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration\EpicRPG\AudioConfiguration.xml" />
-    <Content Include="Configuration\EpicRPG\TextureConfiguration.xml" />
-    <Content Include="Configuration\EpicRPG\EntityConfiguration.xml" />
+    <Content Include="Configuration\EpicRPG\AudioConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\EpicRPG\TextureConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\EpicRPG\EntityConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
-    <Content Include="GameConfiguration.xml" />
+    <Content Include="GameConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
