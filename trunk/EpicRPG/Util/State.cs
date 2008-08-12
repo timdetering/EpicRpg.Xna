@@ -13,5 +13,13 @@ namespace EpicRPG.Util
             IN_PLAY_BATTLE,
             PAUSE,
         }
+
+        public enum ComponentType{
+            ABILITY,
+            AUDIO,
+            INVENTORY,
+            MOVEMENT,
+            RENDER,
+        }
     }
 }

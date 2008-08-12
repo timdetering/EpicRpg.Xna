@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EntityConfiguration>
-	
+	<Entity name="MainCharacter" health="100" mana="200" strength="50">
+		<Component type="InventoryComponent" maxSize="10">
+			<Item/>
+			<Item/>
+			<Item/>
+		</Component>
+	</Entity>
 </EntityConfiguration>

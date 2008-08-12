@@ -2,4 +2,6 @@
 <GameConfiguration>
 	<Setting configurationRoot="Configuration"/>
 	<Setting configuration="EpicRPG"/>
+	<Setting configurationFile="EntityConfiguration.xml"/>
+	<Setting configurationFile="TextureConfiguration.xml"/>
 </GameConfiguration>
