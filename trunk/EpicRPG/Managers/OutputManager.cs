@@ -7,7 +7,7 @@ using EpicRPG.Util;
 
 namespace EpicRPG.Managers
 {
-    public class GraphicsManager : Singleton<GraphicsManager>
+    public class OutputManager : Singleton<OutputManager>
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;

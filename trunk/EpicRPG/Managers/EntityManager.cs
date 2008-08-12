@@ -29,12 +29,25 @@ namespace EpicRPG.Managers
 
         public List<EntityConfiguration> Entities{
             get{return this.entityConfigurationBank;}
-            set{this.entityConfigurationBank = value;}
+            set{
+                this.entityConfigurationBank = value;
+
+                for(int i = 0; i < this.entityConfigurationBank.Count; i++){
+                    BaseEntity e = this.createNewEntity(i);
+                }
+            }
         }
 
         public BaseEntity createNewEntity(int configId){
+            EntityConfiguration config = null;
+            if (this.entityConfigurationBank != null && this.entityConfigurationBank.Capacity >= configId){
+                config = this.entityConfigurationBank[configId];
+            }
 
-            return null;
+            if(config == null)
+                return null;
+
+            return config.buildEntity();
         }
     }
 }
