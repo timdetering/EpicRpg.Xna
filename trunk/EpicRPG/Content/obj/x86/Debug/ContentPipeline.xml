@@ -5,10 +5,10 @@
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
-      <RootDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
