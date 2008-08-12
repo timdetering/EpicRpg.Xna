@@ -38,6 +38,7 @@ namespace EpicRPG
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            FileManager.getInstance().loadGameConfiguration();
 
             base.Initialize();
         }
