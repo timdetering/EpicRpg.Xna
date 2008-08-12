@@ -56,16 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio\AudioSet.cs" />
     <Compile Include="Entities\Abilities\BaseAbility.cs" />
     <Compile Include="Entities\Attribute.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Components\AbilityComponent.cs" />
     <Compile Include="Entities\Components\AudioComponent.cs" />
     <Compile Include="Entities\Components\BaseComponent.cs" />
-    <Compile Include="Entities\Components\CharacterComponent.cs" />
     <Compile Include="Entities\Components\InventoryComponent.cs" />
     <Compile Include="Entities\Components\MovementComponent.cs" />
     <Compile Include="Entities\Components\RenderComponent.cs" />
+    <Compile Include="Entities\Configuration\ComponentConfiguration.cs" />
     <Compile Include="Entities\Configuration\EntityConfiguration.cs" />
     <Compile Include="Entities\GameEntity.cs" />
     <Compile Include="Entities\Items\Armor.cs" />
