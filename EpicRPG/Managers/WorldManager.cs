@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 
 using EpicRPG.Util;
+using Microsoft.Xna.Framework;
 
 namespace EpicRPG.Managers
 {
     public class WorldManager : Singleton<WorldManager>
     {
-        public enum Occupancy{
-            OCCUPIED, UNOCCUPIED
-        }
-
-        private byte[,] occupancyGrid;
-        private long[,] entityGrid;
-        private long[,] terrainGrid;
+        private State.Occupancy[,] occupancyGrid;
+        private int[,] entityGrid;
+        private int[,] terrainGrid;
     }
 }

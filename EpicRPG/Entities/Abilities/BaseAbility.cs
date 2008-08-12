@@ -6,7 +6,7 @@ namespace EpicRPG.Entities.Abilities
 {
     public class BaseAbility
     {
-        public long keyId;
+        public int keyId;
         public string name;
         public string description;
     }

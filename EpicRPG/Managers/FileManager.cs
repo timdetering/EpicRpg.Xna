@@ -328,7 +328,7 @@ namespace EpicRPG.Managers
                     }
                     else if (readingProjectiles)
                     {
-                        //TODO: PROJECTILES ?
+                        //TODO: PROJECTILES (?)
                         #region PROJECTILES
                         /*
                         //Iterating the projectileIterator for an accurate ID
