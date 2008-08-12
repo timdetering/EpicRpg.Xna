@@ -22,5 +22,9 @@ namespace EpicRPG.Util
             MOVEMENT,
             RENDER,
         }
+
+        public enum Occupancy{
+            OCCUPIED, UNOCCUPIED
+        }
     }
 }
