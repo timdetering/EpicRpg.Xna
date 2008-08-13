@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using EpicRPG.Entities.Abilities;
 
 namespace EpicRPG.Entities.Items
 {
@@ -8,9 +9,16 @@ namespace EpicRPG.Entities.Items
     {
         private long value;
         private string name;
+        
+        //TODO: multiple abilities?
+        public BaseAbility ability;
 
         public Item(){
 
+        }
+
+        public void UseMe(){
+            //ability.cast?
         }
 
         public long getValue(){

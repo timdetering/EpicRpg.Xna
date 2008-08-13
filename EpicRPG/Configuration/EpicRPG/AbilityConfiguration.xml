@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AbilityConfiguration>
+	<!-- TODO: do we define all abilities and map them by name, or define new abilities for whatever? -->
+	<!-- Mapping them will save memory, but by creating new ones we will have more freedom -->
+	<Ability type="Heal" target="Self" name="Heal" power="10"/>
+</AbilityConfiguration>

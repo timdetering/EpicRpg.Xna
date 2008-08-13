@@ -11,6 +11,7 @@ namespace EpicRPG.Entities.Configuration
 
         public int classID;
         public string className;
+        public string entityName;
 
         public int health = 100,
                    mana = 0,
@@ -20,18 +21,19 @@ namespace EpicRPG.Entities.Configuration
         public Vector2 size = new Vector2(1, 1);
         public List<ComponentConfiguration> components = new List<ComponentConfiguration>();
 
-        public EntityConfiguration(int id, string name, params string[] args){
+        public EntityConfiguration(int id, string className, params string[] args){
             this.classID = id;
-            this.className = name;
+            this.className = className;
 
             //set all other properties that are given
             for(int i = 0; (i + 1) < args.Length; i += 2){
                 switch(args[i].ToUpper()){
-                    case "HEALTH":          health          = int.Parse(args[i + 1]); break;
-                    case "MANA":            mana            = int.Parse(args[i + 1]); break;
-                    case "STRENGTH":        health          = int.Parse(args[i + 1]); break;
-                    case "WIDTH":           size.X          = float.Parse(args[i + 1]); break;
-                    case "HEIGHT":          size.Y          = float.Parse(args[i + 1]); break;
+                    case "NAME":     entityName      = args[i + 1];              break;
+                    case "HEALTH":   health          = int.Parse(args[i + 1]);   break;
+                    case "MANA":     mana            = int.Parse(args[i + 1]);   break;
+                    case "STRENGTH": health          = int.Parse(args[i + 1]);   break;
+                    case "WIDTH":    size.X          = float.Parse(args[i + 1]); break;
+                    case "HEIGHT":   size.Y          = float.Parse(args[i + 1]); break;
                     default: break;
                 }
             }
@@ -48,7 +50,7 @@ namespace EpicRPG.Entities.Configuration
         }
 
         public GameEntity buildEntity(){
-            GameEntity e = new GameEntity(this.className, this.health, this.mana, this.strength);
+            GameEntity e = new GameEntity(this.className, this.entityName, this.health, this.mana, this.strength);
             
             this.components.ForEach(delegate(ComponentConfiguration cc)
             {
