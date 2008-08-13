@@ -20,8 +20,37 @@ namespace EpicRPG.Managers
             this.spriteBatch = new SpriteBatch(device);
         }
 
-        public void Draw(GameTime gameTime){
+        public void Draw(GameTime gameTime, State.GameState currentState){
             this.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            
+            switch (currentState){
+                case State.GameState.INITIALIZING:
+                    break;
+
+                case State.GameState.MAIN_MENU:
+                    break;
+
+                case State.GameState.IN_PLAY_BATTLE:
+                    break;
+
+                case State.GameState.IN_PLAY_NORMAL:
+                    break;
+
+                case State.GameState.PAUSE:
+                    break;
+            }
+        }
+
+        public void Render_String(/*TODO: PARAMS!*/){
+
+        }
+
+        public void Render_Static(/*TODO: PARAMS!*/){
+
+        }
+
+        public void Render_Animated(/*TODO: PARAMS!*/){
+
         }
     }
 }

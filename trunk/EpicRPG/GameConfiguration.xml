@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameConfiguration>
-	<Setting configurationRoot="Configuration"/>
-	<Setting configuration="EpicRPG"/>
 	<Setting configurationFile="EntityConfiguration.xml"/>
 	<Setting configurationFile="TextureConfiguration.xml"/>
 </GameConfiguration>

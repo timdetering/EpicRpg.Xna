@@ -54,7 +54,7 @@ namespace EpicRPG.Managers
                     readingEntities = (node.Name == "Entity");
                     readingProjectiles = (node.Name == "Projectile");
                     readingTextures = (node.Name == "TextureCollection");
-                    readingGameConfig = (node.Name == "Setting");
+                    readingGameConfig = (node.Name == "Setting" || node.Name == "Include");
                     readingItems = (node.Name == "Item");
 
                     if (readingGameConfig)

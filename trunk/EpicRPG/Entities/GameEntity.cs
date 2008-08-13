@@ -15,8 +15,7 @@ namespace EpicRPG.Entities
             health,
             mana;
         private int strength;
-            
-
+        
         public GameEntity(string name, int health, int mana, int strength){
             this.name = name;
             this.health = new Attribute(health, health);

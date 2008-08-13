@@ -5,6 +5,7 @@ using EpicRPG.Entities;
 
 using EpicRPG.Util;
 using EpicRPG.Entities.Configuration;
+using Microsoft.Xna.Framework;
 
 namespace EpicRPG.Managers
 {
@@ -19,6 +20,15 @@ namespace EpicRPG.Managers
         private BaseEntity assignKeyId(BaseEntity e){
             e.setKeyId(this.entityBank.Count);
             return e;
+        }
+
+        public void Update(GameTime gameTime){
+            //TODO: Update applicable entities; not all will need to update!
+        }
+
+        public void RenderEntities(){
+            //TODO: update params so we can render
+            //TODO: Render applicable entities.
         }
 
     }

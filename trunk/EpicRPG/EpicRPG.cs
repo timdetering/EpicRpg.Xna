@@ -97,6 +97,8 @@ namespace EpicRPG
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            InputManager.getInstance().Update(gameTime);
+
             switch(this.gameState){
                 
                 case State.GameState.INITIALIZING:
@@ -106,9 +108,15 @@ namespace EpicRPG
                     break;
 
                 case State.GameState.IN_PLAY_BATTLE:
-                    break;
+                    //TODO: update battle-specific in_play data
+                    goto case State.GameState.IN_PLAY;
 
                 case State.GameState.IN_PLAY_NORMAL:
+                    //TODO: update normal-play-specific in_play data
+                    goto case State.GameState.IN_PLAY;
+
+                case State.GameState.IN_PLAY:
+                    //TODO: update generic in_play data
                     break;
 
                 case State.GameState.PAUSE:
@@ -124,7 +132,7 @@ namespace EpicRPG
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            OutputManager.getInstance().Draw(gameTime);
+            OutputManager.getInstance().Draw(gameTime, this.gameState);
 
             base.Draw(gameTime);
         }

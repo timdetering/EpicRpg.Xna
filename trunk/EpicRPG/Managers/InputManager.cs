@@ -12,6 +12,8 @@ namespace EpicRPG.Managers
         private KeyboardState keyStateCurrent,
                               keyStatePrev;
 
+        //TODO: do we need mouse input, or are we limiting to keyboard?
+
         private bool enterStringMode = false;
         private string enteredString = "";
 
@@ -115,6 +117,7 @@ namespace EpicRPG.Managers
             this.MOVE_UP = false;
         }
 
+        //TODO: this function isn't *that* great...redo?
         private void processTextInput()
         {
             Keys[] keys = keyStateCurrent.GetPressedKeys();
