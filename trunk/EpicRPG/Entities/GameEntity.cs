@@ -8,15 +8,23 @@ namespace EpicRPG.Entities
 {
     public class GameEntity : BaseEntity
     {
-        private string name;
+        public string name;
+        private string className;
         private List<BaseComponent> components;
         private Vector2 location;
         private Attribute
             health,
             mana;
         private int strength;
+
+        public GameEntity(){
+            this.name = "";
+            this.strength = 0;
+            this.components = new List<BaseComponent>();
+        }
         
-        public GameEntity(string name, int health, int mana, int strength){
+        public GameEntity(string className, string name, int health, int mana, int strength){
+            this.className = className;
             this.name = name;
             this.health = new Attribute(health, health);
             this.mana = new Attribute(mana, mana);
@@ -26,6 +34,10 @@ namespace EpicRPG.Entities
 
         public void addComponent(BaseComponent bc){
             this.components.Add(bc);
+        }
+
+        public void heal(int value){
+            this.health.value += value;
         }
 
         public int getHealth(){

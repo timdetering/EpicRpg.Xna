@@ -62,6 +62,8 @@ namespace EpicRPG
             // TODO: Add your initialization logic here
             FileManager.getInstance().loadGameConfiguration();
 
+            MenuManager.getInstance().initializeMenuManager();
+
             base.Initialize();
         }
 
@@ -73,8 +75,12 @@ namespace EpicRPG
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             OutputManager.getInstance().initializeSpriteBatch(GraphicsDevice);
+            OutputManager.getInstance().setFonts(Content.Load<SpriteFont>(@"Arial"));
 
             // TODO: use this.Content to load your game content here
+
+            //done, ready to play
+            this.gameState = State.GameState.MAIN_MENU;
         }
 
         /// <summary>
@@ -105,6 +111,12 @@ namespace EpicRPG
                     break;
 
                 case State.GameState.MAIN_MENU:
+                    MenuManager.getInstance().Update(gameTime);
+                    break;
+
+                case State.GameState.CUTSCENE:
+                    //TODO: a cutsceneManager???
+                    CampaignManager.getInstance().Update(gameTime);
                     break;
 
                 case State.GameState.IN_PLAY_BATTLE:

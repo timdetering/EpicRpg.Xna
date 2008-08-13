@@ -1,10 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EntityConfiguration>
-	<Entity name="Main Character" health="100" mana="200" strength="50">
-		<Component type="InventoryComponent" maxCapacity="10"/>
-		<Component type="AbilityComponent"/>
-		<Component type="MovementComponent"/>
-		<Component type="RenderComponent"/>
-	</Entity>
-	<Entity name="Mr Magoo"/>
+	
 </EntityConfiguration>

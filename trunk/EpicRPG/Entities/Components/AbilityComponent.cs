@@ -2,11 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EpicRPG.Util;
+using EpicRPG.Entities.Abilities;
 
 namespace EpicRPG.Entities.Components
 {
+    /// <summary>
+    /// Component that allows its parent to contain and use abilities.
+    /// </summary>
     public class AbilityComponent : BaseComponent
     {
+        public List<BaseAbility> abilities;
 
         public AbilityComponent(BaseEntity e) : base(e){
             this.type = State.ComponentType.ABILITY;

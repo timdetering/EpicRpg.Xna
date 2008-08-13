@@ -12,6 +12,8 @@ namespace EpicRPG.Managers
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        SpriteFont arialFont;
+
         public void initializeGraphics(EpicRPG mainApp){
             this.graphics = new GraphicsDeviceManager(mainApp);
         }
@@ -20,14 +22,28 @@ namespace EpicRPG.Managers
             this.spriteBatch = new SpriteBatch(device);
         }
 
+        //TODO: Expand to allow multiple fonts
+        public void setFonts(params SpriteFont[] fonts){
+            if (fonts.Length > 0)
+                this.arialFont = fonts[0];
+        }
+
         public void Draw(GameTime gameTime, State.GameState currentState){
-            this.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            //draw background...
+            this.graphics.GraphicsDevice.Clear(Color.Black);
+
+            this.spriteBatch.Begin();
             
             switch (currentState){
                 case State.GameState.INITIALIZING:
                     break;
 
                 case State.GameState.MAIN_MENU:
+                    MenuManager.getInstance().DrawCurrentMenu();
+                    break;
+
+                case State.GameState.CUTSCENE:
+                    CampaignManager.getInstance().Draw();
                     break;
 
                 case State.GameState.IN_PLAY_BATTLE:
@@ -39,10 +55,12 @@ namespace EpicRPG.Managers
                 case State.GameState.PAUSE:
                     break;
             }
+
+            this.spriteBatch.End();
         }
 
-        public void Render_String(/*TODO: PARAMS!*/){
-
+        public void Render_String(string text, Vector2 position, Color color){
+            this.spriteBatch.DrawString(this.arialFont, text, position, color);
         }
 
         public void Render_Static(/*TODO: PARAMS!*/){
@@ -53,4 +71,5 @@ namespace EpicRPG.Managers
 
         }
     }
+
 }

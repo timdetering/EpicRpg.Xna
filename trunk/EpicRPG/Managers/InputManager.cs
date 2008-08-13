@@ -30,7 +30,7 @@ namespace EpicRPG.Managers
             if (enterStringMode)
             {
                 this.processTextInput();
-                Console.WriteLine(this.enteredString);
+                //Console.WriteLine(this.enteredString);
             }
 
             //interface
@@ -38,7 +38,7 @@ namespace EpicRPG.Managers
             //if (this.keyPressed(Keys.Escape))
             //    Incursio.getInstance().pause_play();
 
-            if (this.keyPressed(Keys.Enter))
+            /*if (this.keyPressed(Keys.Enter))
             {
                 if (enterStringMode)
                 {
@@ -48,12 +48,14 @@ namespace EpicRPG.Managers
 
                 this.enterStringMode = !this.enterStringMode;
                 this.enteredString = "";
-            }
+            }*/
 
             //only update these things if game is in play
-            if (EpicRPG.getInstance().CurrentState == State.GameState.IN_PLAY && !enterStringMode)
-            {
+            if (EpicRPG.getInstance().CurrentState == State.GameState.IN_PLAY && !enterStringMode){
                 this.Update_PlayState(gameTime);
+            }
+            else if(EpicRPG.getInstance().CurrentState == State.GameState.MAIN_MENU){
+                this.Update_MenuState(gameTime);
             }
 
             //save states for previous
@@ -89,6 +91,44 @@ namespace EpicRPG.Managers
 
         }
 
+        private void Update_MenuState(GameTime gameTime)
+        {
+
+            #region KEYBOARD COMMANDS
+
+            this.clearMoveDirections();
+
+            if(this.keyPressed(Keys.Up))
+            {
+                MOVE_UP = true;
+            }
+            else if (this.keyPressed(Keys.Down))
+            {
+                MOVE_DOWN = true;
+            }
+
+            if (this.keyPressed(Keys.Left))
+            {
+                MOVE_LEFT = true;
+            }
+            else if (this.keyPressed(Keys.Right) || this.keyPressed(Keys.Enter))
+            {
+                MOVE_RIGHT = true;
+            }
+
+            #endregion
+
+        }
+
+        public bool anyKeysPressed(params Keys[] keys){
+            foreach(Keys k in keys){
+                if (this.keyPressed(k))
+                    return true;
+            }
+
+            return false;
+        }
+
         public bool keyPressed(Keys key)
         {
             return (keyStateCurrent.IsKeyDown(key) && keyStatePrev.IsKeyUp(key));
@@ -117,23 +157,40 @@ namespace EpicRPG.Managers
             this.MOVE_UP = false;
         }
 
+        public string getInputString(){
+            //string tmp = this.enteredString;
+            //this.enteredString = "";
+            //return tmp;
+            return this.enteredString;
+        }
+
+        public  void setInputString(string i){
+            this.enterStringMode = true;
+            this.enteredString = i;
+        }
+
         //TODO: this function isn't *that* great...redo?
         private void processTextInput()
         {
             Keys[] keys = keyStateCurrent.GetPressedKeys();
             for (int i = 0; i < keys.Length; i++)
             {
-                if (keys[i] == Keys.Back || keys[i] == Keys.Delete)
-                {
-                    if (this.enteredString.Length > 0)
-                        this.enteredString = this.enteredString.Remove(enteredString.Length - 1);
-                }
-                else
-                {
+                //if (keys[i] == Keys.Back)
+                //{
+                //    if (this.enteredString.Length > 0)
+                //        this.enteredString = this.enteredString.Remove(enteredString.Length - 1);
+                //}
+                //else
+                //{
                     if (this.keyPressed(keys[i]))
                     {
                         switch (keys[i])
                         {
+                            case Keys.Back:
+                                if (this.enteredString.Length > 0)
+                                    this.enteredString = this.enteredString.Remove(enteredString.Length - 1);
+                                break;
+
                             #region PUNCTUATION KEYS
                             case Keys.Space:
                                 this.enteredString += " ";
@@ -283,7 +340,7 @@ namespace EpicRPG.Managers
                                 break;
                         }
                     }
-                }
+                //}
             }
         }
     }

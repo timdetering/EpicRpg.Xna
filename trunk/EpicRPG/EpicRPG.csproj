@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Audio\AudioSet.cs" />
     <Compile Include="Entities\Abilities\BaseAbility.cs" />
+    <Compile Include="Entities\Abilities\BaseHealAbility.cs" />
+    <Compile Include="Entities\Abilities\HealSelfAbility.cs" />
     <Compile Include="Entities\Attribute.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Components\AbilityComponent.cs" />
@@ -74,13 +76,18 @@
     <Compile Include="Entities\Items\Weapon.cs" />
     <Compile Include="Entities\Party.cs" />
     <Compile Include="Entities\WorldEntity.cs" />
+    <Compile Include="Interface\Menu.cs" />
+    <Compile Include="Interface\MenuItem.cs" />
+    <Compile Include="Interface\MenuItemWithInput.cs" />
     <Compile Include="Managers\AbilityManager.cs" />
     <Compile Include="Managers\AudioManager.cs" />
     <Compile Include="Managers\BattleManager.cs" />
+    <Compile Include="Managers\CampaignManager.cs" />
     <Compile Include="Managers\ConfigurationManager.cs" />
     <Compile Include="Managers\EntityManager.cs" />
     <Compile Include="Managers\FileManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Managers\MenuManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Util\AudioSet.cs" />
@@ -92,11 +99,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="EpicRPG.cs" />
     <Compile Include="Util\State.cs" />
+    <Compile Include="Util\WritableObject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configuration\EpicRPG\AbilityConfiguration.xml" />
     <Content Include="Configuration\EpicRPG\AudioConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configuration\EpicRPG\ItemConfiguration.xml" />
     <Content Include="Configuration\EpicRPG\TextureConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

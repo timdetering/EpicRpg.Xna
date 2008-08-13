@@ -159,7 +159,7 @@ namespace EpicRPG.Managers
                         entityIterator++;
 
                         //Getting specific attributes
-                        XmlAttribute name = node.Attributes["name"];
+                        XmlAttribute name = node.Attributes["className"];
                         string nameToSet = name.Value;
                         node.Attributes.Remove(name);
 
@@ -372,7 +372,7 @@ namespace EpicRPG.Managers
                     else
                     {
                         //ERROR!!! this shoud not happen
-                        Console.WriteLine("Unrecognizable format or value in parsing XML.");
+                        Console.WriteLine("Unrecognizable format or value in parsing XML: " + node.Name);
                     }
 
                 }

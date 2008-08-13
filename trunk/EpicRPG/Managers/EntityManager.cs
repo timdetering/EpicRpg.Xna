@@ -24,6 +24,18 @@ namespace EpicRPG.Managers
 
         public void Update(GameTime gameTime){
             //TODO: Update applicable entities; not all will need to update!
+            foreach(BaseEntity e in entityBank){
+                /*TODO: only update: 
+                 *  - entites on-screen
+                 *  - player-controlled entities
+                 *  - ????
+                 */ 
+                e.Update(gameTime);
+            }
+        }
+
+        public BaseEntity getEntityByKeyId(int key){
+            return this.entityBank[key];
         }
 
         public void RenderEntities(){
