@@ -22,6 +22,23 @@ namespace EpicRPG.Managers
         {
             switch (setting.ToUpper())
             {
+
+                case "CONFIGROOT":
+                case "CONFIGURATIONROOT":
+                    if (this.configurationFiles.Count == null)
+                        this.configRoot = value;
+                    else
+                        Console.WriteLine("Cannot modify configuration root location after files have been added");
+                    break;
+
+                case "CONFIGSCHEME":
+                case "CONFIGURATIONSCHEME":
+                    if (this.configurationFiles.Count == null)
+                        this.configScheme = value;
+                    else
+                        Console.WriteLine("Cannot modify configuration scheme location after files have been added");
+                    break;
+
                 case "CONFIGURATIONFILE":
                     if (this.configurationFiles == null) this.configurationFiles = new List<string>();
                     this.configurationFiles.Add(this.configRoot + "/" + this.configScheme + "/" + value);

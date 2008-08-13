@@ -103,6 +103,7 @@
     <Content Include="Configuration\EpicRPG\EntityConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Configuration\EpicRPG\WorldConfiguration.xml" />
     <Content Include="Game.ico" />
     <Content Include="GameConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
