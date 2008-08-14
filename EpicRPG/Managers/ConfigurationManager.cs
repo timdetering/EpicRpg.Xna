@@ -16,6 +16,8 @@ namespace EpicRPG.Managers
         private string configRoot = "Configuration";
         private string configScheme = "EpicRPG";
 
+        public string contentRoot = "Content";
+
         public List<string> configurationFiles;
 
         public void setConfigurationSetting(string setting, string value)
@@ -37,6 +39,10 @@ namespace EpicRPG.Managers
                         this.configScheme = value;
                     else
                         Console.WriteLine("Cannot modify configuration scheme location after files have been added");
+                    break;
+
+                case "CONTENTROOT":
+                    this.contentRoot = value;
                     break;
 
                 case "CONFIGURATIONFILE":

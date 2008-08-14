@@ -32,8 +32,6 @@ namespace EpicRPG.Managers
 
             this.newGameMenu = new Menu("Create Your Hero",
                 new MenuItemWithInput("Name"),
-                new MenuItemWithInput("Quest"),
-                new MenuItemWithInput("Favorite Color"),
                 new MenuItem("Begin Epic RPG", State.MenuState.START_NEW_GAME),
                 new MenuItem("Cancel", State.MenuState.MAIN_MENU));
 

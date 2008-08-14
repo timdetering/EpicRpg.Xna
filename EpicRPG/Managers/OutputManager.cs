@@ -16,6 +16,7 @@ namespace EpicRPG.Managers
 
         public void initializeGraphics(EpicRPG mainApp){
             this.graphics = new GraphicsDeviceManager(mainApp);
+            GraphicsManager.getInstance().initializeGraphicsManager();
         }
 
         public void initializeSpriteBatch(GraphicsDevice device){
@@ -33,7 +34,7 @@ namespace EpicRPG.Managers
             this.graphics.GraphicsDevice.Clear(Color.Black);
 
             this.spriteBatch.Begin();
-            
+            EntityManager.getInstance().RenderEntities();
             switch (currentState){
                 case State.GameState.INITIALIZING:
                     break;
@@ -63,12 +64,21 @@ namespace EpicRPG.Managers
             this.spriteBatch.DrawString(this.arialFont, text, position, color);
         }
 
-        public void Render_Static(/*TODO: PARAMS!*/){
-
+        public void Render_Static(Texture2D texture, Vector2 onScreenLoc, Color colorMask){
+            spriteBatch.Draw(texture,
+                new Rectangle((int)onScreenLoc.X - (texture.Width / 2),
+                    (int)(onScreenLoc.Y - (texture.Height * 0.80)),
+                    texture.Width, 
+                    texture.Height),
+                colorMask);
         }
 
         public void Render_Animated(/*TODO: PARAMS!*/){
 
+        }
+
+        public GraphicsDevice getGraphicsDevice(){
+            return this.spriteBatch.GraphicsDevice;
         }
     }
 

@@ -60,9 +60,6 @@ namespace EpicRPG
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            FileManager.getInstance().loadGameConfiguration();
-
-            MenuManager.getInstance().initializeMenuManager();
 
             base.Initialize();
         }
@@ -76,6 +73,10 @@ namespace EpicRPG
             // Create a new SpriteBatch, which can be used to draw textures.
             OutputManager.getInstance().initializeSpriteBatch(GraphicsDevice);
             OutputManager.getInstance().setFonts(Content.Load<SpriteFont>(@"Arial"));
+
+            EntityManager.getInstance().initializeEntityManager();
+            FileManager.getInstance().loadGameConfiguration();
+            MenuManager.getInstance().initializeMenuManager();
 
             // TODO: use this.Content to load your game content here
 
