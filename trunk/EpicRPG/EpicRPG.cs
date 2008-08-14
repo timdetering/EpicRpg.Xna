@@ -81,7 +81,7 @@ namespace EpicRPG
             // TODO: use this.Content to load your game content here
 
             //done, ready to play
-            this.gameState = State.GameState.MAIN_MENU;
+            this.gameState = State.GameState.MENU;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace EpicRPG
                 case State.GameState.INITIALIZING:
                     break;
 
-                case State.GameState.MAIN_MENU:
+                case State.GameState.MENU:
                     MenuManager.getInstance().Update(gameTime);
                     break;
 
@@ -129,7 +129,12 @@ namespace EpicRPG
                     goto case State.GameState.IN_PLAY;
 
                 case State.GameState.IN_PLAY:
+                    PlayerManager.getInstance().Update(gameTime);
                     //TODO: update generic in_play data
+                    break;
+
+                case State.GameState.MESSAGE:
+                    MessageManager.getInstance().Update(gameTime);
                     break;
 
                 case State.GameState.PAUSE:

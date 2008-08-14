@@ -27,7 +27,7 @@ namespace EpicRPG.Managers
 
                 case "CONFIGROOT":
                 case "CONFIGURATIONROOT":
-                    if (this.configurationFiles.Count == null)
+                    if (this.configurationFiles == null)
                         this.configRoot = value;
                     else
                         Console.WriteLine("Cannot modify configuration root location after files have been added");
@@ -35,7 +35,7 @@ namespace EpicRPG.Managers
 
                 case "CONFIGSCHEME":
                 case "CONFIGURATIONSCHEME":
-                    if (this.configurationFiles.Count == null)
+                    if (this.configurationFiles == null)
                         this.configScheme = value;
                     else
                         Console.WriteLine("Cannot modify configuration scheme location after files have been added");

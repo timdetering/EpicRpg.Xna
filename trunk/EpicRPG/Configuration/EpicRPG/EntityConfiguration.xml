@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EntityConfiguration>
 	<Entity className="Hero" health="100" mana="200" strength="5">
+		<Component type="MovementComponent" speed="10"/>
 		<Component type="RenderComponent" graphics="Hero"/>
 		<Component type="InventoryComponent"/>
 		<Component type="AbilityComponent"/>

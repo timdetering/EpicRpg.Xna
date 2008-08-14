@@ -13,6 +13,9 @@ namespace EpicRPG.Entities.Components
     {
         public GraphicsCollection graphics;
 
+        public int currentFrameX = 0,
+                   currentFrameY = 0;
+
         public RenderComponent(BaseEntity e) : base(e){
             this.type = State.ComponentType.RENDER;
         }
@@ -33,10 +36,38 @@ namespace EpicRPG.Entities.Components
 
         public void Render(int frameTimer, int FRAME_LENGTH){
             //TODO: STATE-DETERMINED GRAPHICS
-            OutputManager.getInstance().Render_Static(
-                this.graphics.getCurrentGraphic(ref this.entityRef).texture,
-                this.entityRef.location, 
-                Color.White);
+
+            //First, get graphic to draw:
+            GameTexture tex = this.graphics.getCurrentGraphic(ref  this.entityRef);
+
+            //determine to draw static or animated
+            if(tex.frameWidth == 0){
+                OutputManager.getInstance().Render_Static(
+                    tex.texture,
+                    this.entityRef.location, 
+                    Color.White);
+            }
+            else{
+                OutputManager.getInstance().Render_Animated(
+                    tex,
+                    this.entityRef.location,
+                    Color.White,
+                    this.currentFrameX,
+                    this.currentFrameY
+                );
+
+                if (OutputManager.getInstance().gotoNextFrame())
+                {
+                    if (this.currentFrameX < tex.texture.Width - tex.frameWidth)
+                    {
+                        this.currentFrameX += tex.frameWidth;
+                    }
+                    else
+                    {
+                        this.currentFrameX = 0;
+                    }
+                }
+            }
         }
     }
 }

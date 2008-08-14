@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using EpicRPG.Util;
+using EpicRPG.Graphics;
 
 namespace EpicRPG.Managers
 {
@@ -13,6 +14,9 @@ namespace EpicRPG.Managers
         SpriteBatch spriteBatch;
 
         SpriteFont arialFont;
+
+        public int frameTimer = 0,
+                   FRAME_LENGTH = 15;
 
         public void initializeGraphics(EpicRPG mainApp){
             this.graphics = new GraphicsDeviceManager(mainApp);
@@ -32,19 +36,29 @@ namespace EpicRPG.Managers
         public void Draw(GameTime gameTime, State.GameState currentState){
             //draw background...
             this.graphics.GraphicsDevice.Clear(Color.Black);
+            
+            if (frameTimer > FRAME_LENGTH){
+                frameTimer = 0;
+            }
+            else
+                frameTimer++;
 
-            this.spriteBatch.Begin();
+            this.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
             EntityManager.getInstance().RenderEntities();
             switch (currentState){
                 case State.GameState.INITIALIZING:
                     break;
 
-                case State.GameState.MAIN_MENU:
+                case State.GameState.MENU:
                     MenuManager.getInstance().DrawCurrentMenu();
                     break;
 
                 case State.GameState.CUTSCENE:
                     CampaignManager.getInstance().Draw();
+                    break;
+
+                case State.GameState.MESSAGE:
+                    MessageManager.getInstance().Draw();
                     break;
 
                 case State.GameState.IN_PLAY_BATTLE:
@@ -73,12 +87,24 @@ namespace EpicRPG.Managers
                 colorMask);
         }
 
-        public void Render_Animated(/*TODO: PARAMS!*/){
-
+        public void Render_Animated(GameTexture tex, Vector2 onScreen, Color colorMask,
+            int currentFrameX, int currentFrameY)
+        {
+            this.spriteBatch.Draw(tex.texture, 
+                new Rectangle( 
+                    (int)(onScreen.X - (tex.frameWidth / 2)),
+                    (int)(onScreen.Y - (int)(tex.texture.Height * 0.80)), 
+                    tex.frameWidth, tex.texture.Height),
+                new Rectangle(currentFrameX, currentFrameY, tex.frameWidth,
+                    tex.frameHeight), colorMask);
         }
 
         public GraphicsDevice getGraphicsDevice(){
             return this.spriteBatch.GraphicsDevice;
+        }
+
+        public bool gotoNextFrame(){
+            return this.frameTimer >= this.FRAME_LENGTH;
         }
     }
 

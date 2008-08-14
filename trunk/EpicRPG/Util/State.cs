@@ -6,19 +6,21 @@ namespace EpicRPG.Util
 {
     public static class State
     {
-        public static State.EntityState getByName(string name){
+        public static State.EntityState getEntityStateByName(string name){
             switch(name.ToUpper()){
                 case "IDLE": return State.EntityState.IDLE;
+                case "MOVING": return EntityState.MOVING;
                 default: return EntityState.IDLE;
             }
         }
 
         public enum GameState{
             INITIALIZING,
-            MAIN_MENU,
+            MENU,
             IN_PLAY,        //in case we need a generic playstate
             IN_PLAY_NORMAL,
             IN_PLAY_BATTLE,
+            MESSAGE,
             CUTSCENE,
             PAUSE,
         }
@@ -33,17 +35,20 @@ namespace EpicRPG.Util
 
         public enum MenuState{
             MAIN_MENU,
+            EPIC_MENU,
             NEW_GAME,
             START_NEW_GAME,
             LOAD_GAME,
             SAVE_GAME,
             CREDITS,
             EXIT_GAME,
+            NONE,
             NULL
         }
 
         public enum EntityState{
             IDLE,
+            MOVING,
         }
 
         public enum TerrainType{

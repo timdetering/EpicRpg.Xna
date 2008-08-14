@@ -20,7 +20,9 @@ namespace EpicRPG.Managers
         public bool MOVE_UP = false,
                     MOVE_LEFT = false,
                     MOVE_DOWN = false,
-                    MOVE_RIGHT = false;
+                    MOVE_RIGHT = false,
+                    EPIC_MENU = false,
+                    ACTION = false;
 
         public void Update(GameTime gameTime)
         {
@@ -34,27 +36,13 @@ namespace EpicRPG.Managers
             }
 
             //interface
-            //TODO: PAUSE/ETC
-            //if (this.keyPressed(Keys.Escape))
-            //    Incursio.getInstance().pause_play();
-
-            /*if (this.keyPressed(Keys.Enter))
-            {
-                if (enterStringMode)
-                {
-                    //TODO: perform action
-                    //DebugUtil.matchCommand(this.enteredString);
-                }
-
-                this.enterStringMode = !this.enterStringMode;
-                this.enteredString = "";
-            }*/
 
             //only update these things if game is in play
-            if (EpicRPG.getInstance().CurrentState == State.GameState.IN_PLAY && !enterStringMode){
+            if (EpicRPG.getInstance().CurrentState == State.GameState.IN_PLAY ||
+                EpicRPG.getInstance().CurrentState == State.GameState.MESSAGE){
                 this.Update_PlayState(gameTime);
             }
-            else if(EpicRPG.getInstance().CurrentState == State.GameState.MAIN_MENU){
+            else if(EpicRPG.getInstance().CurrentState == State.GameState.MENU){
                 this.Update_MenuState(gameTime);
             }
 
@@ -64,27 +52,31 @@ namespace EpicRPG.Managers
 
         private void Update_PlayState(GameTime gameTime)
         {
-
             #region KEYBOARD COMMANDS
 
-            this.clearMoveDirections();
+            this.clearBools();
 
-            if (keyStateCurrent.IsKeyDown(Keys.W) || keyStateCurrent.IsKeyDown(Keys.Up))
-            {
+            if (keyStateCurrent.IsKeyDown(Keys.W) || keyStateCurrent.IsKeyDown(Keys.Up)){
                 MOVE_UP = true;
             }
-            else if (keyStateCurrent.IsKeyDown(Keys.S) || keyStateCurrent.IsKeyDown(Keys.Down))
-            {
+            else if (keyStateCurrent.IsKeyDown(Keys.S) || keyStateCurrent.IsKeyDown(Keys.Down)){
                 MOVE_DOWN = true;
             }
 
-            if (keyStateCurrent.IsKeyDown(Keys.A) || keyStateCurrent.IsKeyDown(Keys.Left))
-            {
+            if (keyStateCurrent.IsKeyDown(Keys.A) || keyStateCurrent.IsKeyDown(Keys.Left)){
                 MOVE_LEFT = true;
             }
-            else if (keyStateCurrent.IsKeyDown(Keys.D) || keyStateCurrent.IsKeyDown(Keys.Right))
-            {
+            else if (keyStateCurrent.IsKeyDown(Keys.D) || keyStateCurrent.IsKeyDown(Keys.Right)){
                 MOVE_RIGHT = true;
+            }
+
+            if(this.keyPressed(Keys.Escape)){
+                EpicRPG.getInstance().CurrentState = State.GameState.MENU;
+                MenuManager.getInstance().menuState = State.MenuState.EPIC_MENU;
+            }
+
+            if(this.keyPressed(Keys.Space)){
+                ACTION = true;
             }
             
             #endregion
@@ -96,7 +88,7 @@ namespace EpicRPG.Managers
 
             #region KEYBOARD COMMANDS
 
-            this.clearMoveDirections();
+            this.clearBools();
 
             if(this.keyPressed(Keys.Up))
             {
@@ -149,12 +141,13 @@ namespace EpicRPG.Managers
             return (keyStateCurrent.IsKeyDown(Keys.LeftControl) || keyStateCurrent.IsKeyDown(Keys.RightControl));
         }
 
-        private void clearMoveDirections()
+        private void clearBools()
         {
             this.MOVE_DOWN = false;
             this.MOVE_LEFT = false;
             this.MOVE_RIGHT = false;
             this.MOVE_UP = false;
+            this.ACTION = false;
         }
 
         public string getInputString(){
