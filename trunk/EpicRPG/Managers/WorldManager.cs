@@ -4,13 +4,12 @@ using System.Text;
 
 using EpicRPG.Util;
 using Microsoft.Xna.Framework;
+using EpicRPG.Entities;
 
 namespace EpicRPG.Managers
 {
     public class WorldManager : Singleton<WorldManager>
     {
-        private State.Occupancy[,] occupancyGrid;
-        private int[,] entityGrid;
-        private int[,] terrainGrid;
+        public List<WorldEntity> worldEntities;
     }
 }

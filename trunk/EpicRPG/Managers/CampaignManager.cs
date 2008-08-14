@@ -26,7 +26,7 @@ namespace EpicRPG.Managers
                 case State.CutScene.TEXT:
                     //if(InputManager.getInstance().keyPressed(Keys.Space)){
                     if(InputManager.getInstance().MOVE_RIGHT){
-                        EpicRPG.getInstance().CurrentState = State.GameState.IN_PLAY;
+                        EpicRPG.getInstance().CurrentState = State.GameState.IN_PLAY_NORMAL;
                     }
                     break;
 
@@ -36,13 +36,13 @@ namespace EpicRPG.Managers
         }
 
         public void Draw(){
-            //:temporary
-            string renderString = "Hero Name: " + newHero.name;
-            OutputManager.getInstance().Render_String(renderString, new Vector2(50, 50), Color.Blue);
-            //
             switch (this.currentScene){
                 case State.CutScene.TEXT:
                     //TODO: WRITE SCENE DATA...
+                    //:temporary
+                    //string renderString = "Hero Name: " + newHero.name;
+                    //OutputManager.getInstance().Render_String(renderString, new Vector2(50, 50), Color.Blue);
+                    //
                     break;
 
                 default:
@@ -52,10 +52,12 @@ namespace EpicRPG.Managers
 
         public void initializeNewGame(string heroName/*TODO: PARAMS*/){
             //TODO: BUILD HERO
-            this.newHero = new GameEntity();
+            this.newHero = (GameEntity)EntityManager.getInstance().createNewEntity("Hero");
             this.newHero.name = heroName;
-
+            this.newHero.location = new Vector2(50, 50);
             //TODO: w/e else
+
+            PlayerManager.getInstance().initializePlayerManager(this.newHero);
 
             this.BeginNewGame();
         }

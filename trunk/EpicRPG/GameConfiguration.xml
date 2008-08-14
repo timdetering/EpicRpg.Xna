@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameConfiguration>
+	<Setting contentRoot="C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\Content"/>
 	<Setting configurationFile="EntityConfiguration.xml"/>
-	<Setting configurationFile="TextureConfiguration.xml"/>
+	<Setting configurationFile="GraphicsConfiguration.xml"/>
 </GameConfiguration>

@@ -5,6 +5,8 @@ using EpicRPG.Util;
 using EpicRPG.Entities.Configuration;
 using System.Xml;
 using System.IO;
+using Microsoft.Xna.Framework.Graphics;
+using EpicRPG.Graphics;
 
 namespace EpicRPG.Managers
 {
@@ -31,7 +33,7 @@ namespace EpicRPG.Managers
             //Lists for object factory
             //List<AudioCollection> audioList = new List<AudioCollection>();
             List<EntityConfiguration> entityList = new List<EntityConfiguration>();
-            //List<TextureCollection> textureList = new List<TextureCollection>();
+            List<GraphicsCollection> graphicsList = new List<GraphicsCollection>();
             //List<ProjectileConfiguration> projectileList = new List<ProjectileConfiguration>();
 
             try
@@ -44,7 +46,8 @@ namespace EpicRPG.Managers
                 bool readingAudio = false;
                 bool readingEntities = false;
                 bool readingProjectiles = false;
-                bool readingTextures = false;
+                bool readingGraphics = false;
+                bool readingTerrainGraphics = false;
                 bool readingGameConfig = false;
                 bool readingItems = false;
 
@@ -53,7 +56,8 @@ namespace EpicRPG.Managers
                     readingAudio = (node.Name == "AudioCollection");
                     readingEntities = (node.Name == "Entity");
                     readingProjectiles = (node.Name == "Projectile");
-                    readingTextures = (node.Name == "TextureCollection");
+                    readingGraphics = (node.Name == "GraphicsCollection");
+                    readingTerrainGraphics = (node.Name == "TerrainGraphicsCollection");
                     readingGameConfig = (node.Name == "Setting" || node.Name == "Include");
                     readingItems = (node.Name == "Item");
 
@@ -235,94 +239,70 @@ namespace EpicRPG.Managers
                         readingEntities = false;
                         #endregion
                     }
-                    else if (readingTextures)
+                    else if (readingGraphics)
                     {
                         //TODO: GRAPHICS
                         #region TEXTURES
-                        /******TEXTURE CONFIGURATION PARSING**************************************************************************************
-                         * each texture node will have the node name 'TextureCollection', and will have one attribute, 'name'
-                         * 
-                         * For each of these TextureCollection nodes, a TextureCollection object can be instantiated using its name (& id)
-                         * 
-                         * Each TC node will consist of sub-nodes of (possible) types:
-                         *      Still
-                         *      Movement
-                         *      Death
-                         *      Damaged
-                         *      Attacking
-                         * 
-                         * These can be added simpley by calling the method addSetOfType(string type) on the instantiated TextureCollection.
-                         *      type is the same as the sub-node name (listed above)
-                         * 
-                         * addSetOfType will instantiate a TextureCollection's TextureSet of that type and return it so that we can add textures.
-                         * 
-                         * Each of these sub-nodes can consist of various sub-sub-nodes.  Generally they represent the 4 cardinal directions, but
-                         *      this is not always so.  To assist initializing their properties, they all inherit from TextureSet, which provides
-                         *      a method addTexture(string name, int fw, int fh), where fw and fh represent frameWidth and frameHeight, respectively.
-                         * 
-                         * addTexture will allow each set to parse all of their attribute data themselves.
-                         * 
-                         * Once the completed list of TextureCollections is created, we can add it to the TextureBank (textureCollections)
-                         *************************************************************************************************************************/
-                        /*
+                        
                         //Iterating the entityIterator for an accurate ID
                         textureIterator++;
 
                         //Getting specific attributes
                         XmlAttribute name = node.Attributes["name"];
-                        XmlAttribute portrait = node.Attributes["portrait"];
-                        XmlAttribute icon = node.Attributes["icon"];
 
                         string nameToSet = name.Value;
-                        string portToSet = portrait.Value;
-                        string iconToSet = icon.Value;
-
                         node.Attributes.Remove(name);
-                        node.Attributes.Remove(portrait);
-                        node.Attributes.Remove(icon);
 
-                        //Building a new TextureCollection
-                        TextureCollection texture = new TextureCollection(textureIterator, nameToSet, portToSet, iconToSet);
+                        //Building a new GraphicsCollection
+                        GraphicsCollection graphic = new GraphicsCollection(textureIterator, nameToSet);
 
-                        foreach (XmlNode texNode in node.ChildNodes)
+                        //loop through GraphicsSets
+                        foreach (XmlNode setNode in node.ChildNodes)
                         {
-                            TextureSet set = texture.addSetOfType(texNode.Name);
+                            GraphicsSet set = new GraphicsSet();
+                            
+                            string nodeName, state, orientation, width, height;
+                            XmlAttribute att;
 
-                            if (set != null)
+                            att = setNode.Attributes["state"];
+                            state = (att == null ? "" : att.Value);
+                            
+                            //loop through orientations
+                            foreach (XmlNode subNode in setNode.ChildNodes)
                             {
-                                string nodeName, width, height;
-                                XmlAttribute att;
-
-                                foreach (XmlNode subNode in texNode.ChildNodes)
+                                try
                                 {
-                                    try
-                                    {
-                                        nodeName = subNode.Attributes["file"].Value;
+                                    nodeName = subNode.Attributes["file"].Value;
 
-                                        att = subNode.Attributes["frameWidth"];
-                                        width = (att == null ? "0" : att.Value.Length == 0 ? "0" : att.Value);
+                                    att = subNode.Attributes["orientation"];
+                                    orientation = (att == null ? "" : att.Value);
 
-                                        att = subNode.Attributes["frameHeight"];
-                                        height = (att == null ? "0" : att.Value.Length == 0 ? "0" : att.Value);
+                                    att = subNode.Attributes["frameWidth"];
+                                    width = (att == null ? "0" : att.Value.Length == 0 ? "0" : att.Value);
 
-                                        set.addTexture(subNode.Name, nodeName, int.Parse(width), int.Parse(height));
-                                    }
-                                    catch (Exception e)
-                                    {
-                                        Console.WriteLine("Skipping Texture Configuration #" + textureIterator + " because of:");
-                                        Console.WriteLine(e.StackTrace);
-                                    }
+                                    att = subNode.Attributes["frameHeight"];
+                                    height = (att == null ? "0" : att.Value.Length == 0 ? "0" : att.Value);
+
+                                    set.addGraphics(orientation, nodeName, int.Parse(width), int.Parse(height));
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine("Skipping Texture Configuration #" + textureIterator + " because of:");
+                                    Console.WriteLine(e.StackTrace);
                                 }
                             }
-
+                            
+                            graphic.addGraphics(State.getByName(state), set);
+                            
                         }
 
                         //adding the texture to the list
-                        textureList.Add(texture);
+                        
+                        graphicsList.Add(graphic);
 
                         //Setting the flag back to false
-                        readingTextures = false;
-                        */
+                        readingGraphics = false;
+                        
 
                         #endregion
                     }
@@ -389,9 +369,9 @@ namespace EpicRPG.Managers
                 //if ((audioList != null) && (audioList.Count > 0))
                 //    SoundCollection.getInstance().audioCollections = audioList;
 
-                //Adding the texture list to the texture bank
-                //if ((textureList != null) && (textureList.Count > 0))
-                //    TextureBank.getInstance().textureCollections = textureList;
+                //Adding the graphic list to the texture bank
+                if((graphicsList != null) && (graphicsList.Count > 0))
+                    GraphicsManager.getInstance().graphicsBank = graphicsList;
 
 
             }
@@ -400,6 +380,17 @@ namespace EpicRPG.Managers
                 Console.WriteLine("File Load Exception Found");
                 Console.WriteLine(e);
             }
+        }
+
+        /// <summary>
+        /// Loads the specified texture file from the current Content root directory.
+        /// If filename is in a subdirectory of Content, it must be specified in filename
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public Texture2D loadTexture2DFromFile(string filename){
+            return Texture2D.FromFile(OutputManager.getInstance().getGraphicsDevice(),
+                ConfigurationManager.getInstance().contentRoot + "/" + filename);
         }
     }
 }

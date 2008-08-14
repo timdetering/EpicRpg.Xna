@@ -6,5 +6,6 @@ namespace EpicRPG.Entities
 {
     public class WorldEntity : BaseEntity
     {
+
     }
 }

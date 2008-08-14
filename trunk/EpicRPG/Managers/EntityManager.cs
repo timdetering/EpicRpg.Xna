@@ -13,12 +13,21 @@ namespace EpicRPG.Managers
     {
         private List<BaseEntity> entityBank;
 
+        public void initializeEntityManager(){
+            this.entityBank = new List<BaseEntity>();
+        }
+
         public BaseEntity createNewEntity(int configId){
             return this.assignKeyId(ObjectFactory.getInstance().createNewEntity(configId));
         }
 
+        public BaseEntity createNewEntity(string className){
+            return this.assignKeyId(ObjectFactory.getInstance().createNewEntity(className));
+        }
+
         private BaseEntity assignKeyId(BaseEntity e){
             e.setKeyId(this.entityBank.Count);
+            this.entityBank.Insert(e.getKeyId(), e);
             return e;
         }
 
@@ -41,6 +50,11 @@ namespace EpicRPG.Managers
         public void RenderEntities(){
             //TODO: update params so we can render
             //TODO: Render applicable entities.
+
+            //TEMPORARY:
+            foreach(BaseEntity e in this.entityBank){
+                e.Draw();
+            }
         }
 
     }
@@ -58,6 +72,15 @@ namespace EpicRPG.Managers
                     BaseEntity e = this.createNewEntity(i);
                 }
             }
+        }
+
+        public BaseEntity createNewEntity(string className){
+            foreach(EntityConfiguration c in this.entityConfigurationBank){
+                if (c.className == className)
+                    return this.createNewEntity(c.classID);
+            }
+
+            return null;
         }
 
         public BaseEntity createNewEntity(int configId){

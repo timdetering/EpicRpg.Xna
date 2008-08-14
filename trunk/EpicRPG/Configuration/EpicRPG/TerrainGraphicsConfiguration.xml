@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TerrainGraphicsConfiguration>
+	<TerrainGraphicsCollection>
+		<TerrianGraphicsSet type="grass">
+			<Graphic file="GrassTile1.png"/>
+		</TerrianGraphicsSet>
+	</TerrainGraphicsCollection>
+</TerrainGraphicsConfiguration>
