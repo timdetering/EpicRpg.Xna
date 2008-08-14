@@ -63,8 +63,9 @@ namespace EpicRPG.Managers
         }
 
         public void BeginNewGame(){
-            EpicRPG.getInstance().CurrentState = State.GameState.CUTSCENE;
-            this.setCurrentScene(State.CutScene.TEXT);
+            //EpicRPG.getInstance().CurrentState = State.GameState.CUTSCENE;
+            //this.setCurrentScene(State.CutScene.TEXT);
+            EpicRPG.getInstance().CurrentState = State.GameState.IN_PLAY_NORMAL;
         }
     }
 }

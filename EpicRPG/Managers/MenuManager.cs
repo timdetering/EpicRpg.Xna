@@ -10,7 +10,7 @@ namespace EpicRPG.Managers
 {
     public class MenuManager : Singleton<MenuManager>
     {
-        public State.MenuState _menuState;
+        private State.MenuState _menuState;
 
         public State.MenuState menuState{
             get{return this._menuState;}
@@ -20,7 +20,8 @@ namespace EpicRPG.Managers
         private Menu currentMenu,
                      mainMenu,
                      newGameMenu,
-                     loadGameMenu;
+                     loadGameMenu,
+                     epicMenu;
 
         public void initializeMenuManager(){
             //TODO: construct menus
@@ -35,6 +36,9 @@ namespace EpicRPG.Managers
                 new MenuItem("Begin Epic RPG", State.MenuState.START_NEW_GAME),
                 new MenuItem("Cancel", State.MenuState.MAIN_MENU));
 
+            this.epicMenu = new Menu("EPIC Menu",
+                new MenuItem("Back", State.MenuState.NONE),
+                new MenuItem("Quit", State.MenuState.EXIT_GAME));
         }
 
         public void Update(GameTime gameTime){
@@ -57,11 +61,19 @@ namespace EpicRPG.Managers
                     this.setCurrentMenu(ref this.newGameMenu);
                     break;
 
+                case State.MenuState.EPIC_MENU:
+                    this.setCurrentMenu(ref this.epicMenu);
+                    break;
+
                 case State.MenuState.START_NEW_GAME:
                     CampaignManager.getInstance().initializeNewGame(this.newGameMenu.getInputValueWithName("Name"));
                     break;
 
                 case State.MenuState.SAVE_GAME:
+                    break;
+
+                case State.MenuState.NONE:
+                    EpicRPG.getInstance().CurrentState = State.GameState.IN_PLAY_NORMAL;
                     break;
 
                 default: break;

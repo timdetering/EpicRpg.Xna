@@ -292,7 +292,7 @@ namespace EpicRPG.Managers
                                 }
                             }
                             
-                            graphic.addGraphics(State.getByName(state), set);
+                            graphic.addGraphics(State.getEntityStateByName(state), set);
                             
                         }
 
