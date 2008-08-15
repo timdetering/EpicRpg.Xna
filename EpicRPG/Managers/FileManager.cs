@@ -7,6 +7,7 @@ using System.Xml;
 using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using EpicRPG.Graphics;
+using EpicRPG.Entities;
 
 namespace EpicRPG.Managers
 {
@@ -27,6 +28,7 @@ namespace EpicRPG.Managers
             int audioIterator = -1;
             int entityIterator = -1;
             int textureIterator = -1;
+            int terrainGraphicIterator = -1;
             int projectileIterator = -1;
             int itemIterator = -1;
 
@@ -34,6 +36,7 @@ namespace EpicRPG.Managers
             //List<AudioCollection> audioList = new List<AudioCollection>();
             List<EntityConfiguration> entityList = new List<EntityConfiguration>();
             List<GraphicsCollection> graphicsList = new List<GraphicsCollection>();
+            List<WorldEntity> worldEntityList = new List<WorldEntity>();
             //List<ProjectileConfiguration> projectileList = new List<ProjectileConfiguration>();
 
             try
@@ -306,6 +309,38 @@ namespace EpicRPG.Managers
 
                         #endregion
                     }
+                    else if (readingTerrainGraphics){
+                        #region TERRAIN GRAPHICS
+
+                        //Iterating the terrainGraphicIterator for an accurate ID
+                        terrainGraphicIterator++;
+
+                        //Getting specific attributes
+                        XmlAttribute name = node.Attributes["name"];
+                        XmlAttribute file = node.Attributes["file"];
+                        XmlAttribute pass = node.Attributes["passable"];
+
+                        string nameToSet = "", fileToSet = "";
+                        bool passable = false;
+
+                        if (name != null)
+                            nameToSet = name.Value;
+                        if (file != null)
+                            fileToSet = file.Value;
+                        if (pass != null)
+                            passable = bool.Parse(pass.Value);
+
+                        //Building a new WorldEntity
+                        WorldEntity wentity = new WorldEntity(nameToSet, passable, new GameTexture(fileToSet));
+
+                        //adding the texture to the list
+                        worldEntityList.Add(wentity);
+
+                        //Setting the flag back to false
+                        readingTerrainGraphics = false;
+
+                        #endregion
+                    }
                     else if (readingProjectiles)
                     {
                         //TODO: PROJECTILES (?)
@@ -360,6 +395,9 @@ namespace EpicRPG.Managers
                 //Adding the entity list to the object factory
                 if ((entityList != null) && (entityList.Count > 0))
                     ObjectFactory.getInstance().Entities = entityList;
+
+                if ((worldEntityList != null) && (worldEntityList.Count > 0))
+                    WorldManager.getInstance().setWorldEntities(worldEntityList);
 
                 //Adding the projectile list to the object factory
                 //if ((projectileList != null) && (projectileList.Count > 0))
