@@ -1,3 +1,4 @@
 C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\Content\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Andy\Desktop\EPIC\EpicRPG\Content\obj\x86\Debug\ResolveAssemblyReference.cache

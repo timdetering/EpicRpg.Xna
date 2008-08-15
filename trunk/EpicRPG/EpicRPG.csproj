@@ -92,6 +92,7 @@
     <Compile Include="Managers\MenuManager.cs" />
     <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
+    <Compile Include="Interface\RNG.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Audio\AudioSet.cs" />
     <Compile Include="Graphics\GraphicsSet.cs" />
