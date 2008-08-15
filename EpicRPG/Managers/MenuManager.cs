@@ -42,12 +42,21 @@ namespace EpicRPG.Managers
                 new MenuItem("Save Game", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.NONE),
                 new MenuItem("Quit", State.MenuState.EXIT_GAME));
+<<<<<<< .mine
+
+            this.battleMenu = new Menu("Pick Action",
+                new MenuItem("Attack", State.MenuState.NONE),
+                new MenuItem("Magic", State.MenuState.NONE),
+                new MenuItem("Item", State.MenuState.NONE),
+                new MenuItem("Run", State.MenuState.NONE));
+=======
 
             this.inventoryMenu = new Menu("Inventory",
                 new MenuItem("This", State.MenuState.NULL),
                 new MenuItem("That", State.MenuState.NULL),
                 new MenuItem("The other", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.EPIC_MENU));
+>>>>>>> .r29
         }
 
         public void Update(GameTime gameTime){
