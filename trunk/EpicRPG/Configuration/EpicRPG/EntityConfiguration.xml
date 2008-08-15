@@ -7,7 +7,8 @@
 		<Component type="AbilityComponent"/>
 	</Entity>
 
-	<Entity className="Grass">
-		<Component type="RenderComponent" graphics="Grass"/>
-	</Entity>
+	<Entity className = "blob" health ="5" mana="0" strength="1">
+		<Component type="MovementComponent" speed="2"/>
+		<Component type="RenderComponent" graphics ="blob"/>
+	   </Entity>
 </EntityConfiguration>

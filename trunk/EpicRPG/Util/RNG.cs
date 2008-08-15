@@ -6,7 +6,7 @@ namespace EpicRPG.Util
 {
     public class RNG : Singleton<RNG>
     {
-        private int RandomNumber(int min, int max)
+        public int RandomNumber(int min, int max)
         {
             Random random = new Random();
             return random.Next(min, max);
@@ -15,7 +15,7 @@ namespace EpicRPG.Util
         //will pick how maany enemies are on the screen
         public static int EnemyOnScreen()
         {
-            return RandomNumber(0, 2);
+            return (RandomNumber(0, 2));
         }
 
         //will pick the enemies location

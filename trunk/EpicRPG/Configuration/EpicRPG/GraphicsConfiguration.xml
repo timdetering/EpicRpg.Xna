@@ -6,4 +6,9 @@
 		</GraphicsSet>
 	</GraphicsCollection>
 	
+	<GraphicsCollection name="blob">
+		<GraphicsSet state="idle">
+			<File orientation="south" file="blob.png"/>
+		</GraphicsSet>
+	</GraphicsCollection>
 </GraphicsConfiguration>
