@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GraphicsConfiguration>
+	
 	<GraphicsCollection name="Hero">
 		<GraphicsSet state="idle">
+			<File orientation="north" file="HeavyInfantryNorth.png"/>
+			<File orientation="northEast" file="HeavyInfantryNorth.png"/>
+			<File orientation="east" file="HeavyInfantryEast.png"/>
+			<File orientation="southEast" file="HeavyInfantryEast.png"/>
 			<File orientation="south" file="HeavyInfantrySouth.png"/>
+			<File orientation="southWest" file="HeavyInfantryWest.png"/>
+			<File orientation="west" file="HeavyInfantryWest.png"/>
+			<File orientation="northWest" file="HeavyInfantryNorth.png"/>
 		</GraphicsSet>
 	</GraphicsCollection>
 	

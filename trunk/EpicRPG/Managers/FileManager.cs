@@ -8,6 +8,7 @@ using System.IO;
 using Microsoft.Xna.Framework.Graphics;
 using EpicRPG.Graphics;
 using EpicRPG.Entities;
+using EpicRPG.World;
 
 namespace EpicRPG.Managers
 {
@@ -22,7 +23,7 @@ namespace EpicRPG.Managers
             }
         }
 
-        private void ReadConfigurationFile(string sFileName)
+        public void ReadConfigurationFile(string sFileName)
         {
             //Iterators
             int audioIterator = -1;
@@ -37,6 +38,8 @@ namespace EpicRPG.Managers
             List<EntityConfiguration> entityList = new List<EntityConfiguration>();
             List<GraphicsCollection> graphicsList = new List<GraphicsCollection>();
             List<WorldEntity> worldEntityList = new List<WorldEntity>();
+            List<LevelConfiguration> levelList = new List<LevelConfiguration>();
+            List<ItemConfiguration> itemList = new List<ItemConfiguration>();
             //List<ProjectileConfiguration> projectileList = new List<ProjectileConfiguration>();
 
             try
@@ -51,6 +54,8 @@ namespace EpicRPG.Managers
                 bool readingProjectiles = false;
                 bool readingGraphics = false;
                 bool readingTerrainGraphics = false;
+                bool readingLevelConfigurations = false;
+                bool readingMapConfiguration = false;
                 bool readingGameConfig = false;
                 bool readingItems = false;
 
@@ -60,9 +65,11 @@ namespace EpicRPG.Managers
                     readingEntities = (node.Name == "Entity");
                     readingProjectiles = (node.Name == "Projectile");
                     readingGraphics = (node.Name == "GraphicsCollection");
-                    readingTerrainGraphics = (node.Name == "TerrainGraphicsCollection");
+                    readingTerrainGraphics = (node.Name == "TerrianGraphicsSet");
                     readingGameConfig = (node.Name == "Setting" || node.Name == "Include");
                     readingItems = (node.Name == "Item");
+                    readingLevelConfigurations = (node.Name == "Level");
+                    readingMapConfiguration = (node.Name == "Map");
 
                     if (readingGameConfig)
                     {
@@ -245,7 +252,7 @@ namespace EpicRPG.Managers
                     else if (readingGraphics)
                     {
                         //TODO: GRAPHICS
-                        #region TEXTURES
+                        #region GRPAHICS
                         
                         //Iterating the entityIterator for an accurate ID
                         textureIterator++;
@@ -341,6 +348,149 @@ namespace EpicRPG.Managers
 
                         #endregion
                     }
+                    else if(readingLevelConfigurations)
+                    {
+                        #region LEVEL CONFIGURATIONS
+
+                        //Getting specific attributes
+                        XmlAttribute name = node.Attributes["name"],
+                                     num  = node.Attributes["levelNum"],
+                                     file = node.Attributes["mapFile"];
+                        
+                        string nameToSet, fileToSet;
+                        int numToSet;
+
+                        //we need at least file and num...
+                        if(file != null){
+                            fileToSet = file.Value;
+
+                            if(num != null){
+                                numToSet = int.Parse(num.Value);
+
+                                if (name != null){
+                                    nameToSet = name.Value;
+                                }
+                                else
+                                    nameToSet = "Level " + numToSet;
+
+                                //add the configuration
+                                levelList.Add(new LevelConfiguration(nameToSet, fileToSet, numToSet));
+                            }
+                        }
+
+                        //Setting the flag back to false
+                        readingLevelConfigurations = false;
+                        #endregion
+                    }
+                    //HOLY CRAP EFFICIENCY??!?!?!?!?!!!
+                    else if(readingMapConfiguration)
+                    {
+                        #region MAP CONFIGURATION
+                        //This is a special case, as we'll only have one map loaded at a time.
+                        
+                        //Getting specific attributes
+                        XmlAttribute name = node.Attributes["name"],
+                                     height = node.Attributes["height"],
+                                     width = node.Attributes["width"];
+
+
+                        string nameToSet;
+                        int heightToSet = 0, widthToSet = 0;
+
+                        if (name != null)
+                            nameToSet = name.Value;
+
+                        if(height != null && width != null){
+                            heightToSet = int.Parse(height.Value);
+                            widthToSet = int.Parse(width.Value);
+                        }
+                        else{
+                            //TODO: ERROR
+                            continue;
+                        }
+
+                        //Building a new Map
+                        BaseMap map = new BaseMap();
+                        map.initialize(widthToSet, heightToSet);
+
+                        XmlAttribute att;
+                        //Load map data
+                        foreach (XmlNode partNode in node.ChildNodes)
+                        {
+                            switch(partNode.Name.ToUpper())
+                            {
+                                #region PARSE MAP TERRAIN
+                                case "TERRAIN":
+                                    att = partNode.Attributes["fill"];
+                                    
+                                    int x = 0, y = 0;
+
+                                    if(att != null){
+                                        //fill all with fill value
+                                        for (x = 0; x < widthToSet; x++){
+                                            for (y = 0; y < heightToSet; y++){
+                                                map.setCell(x, y, null);
+                                            }
+                                        }
+                                    }
+                                    else{
+                                        //parse ROWS
+                                        foreach(XmlNode row in partNode.ChildNodes){
+                                            att = row.Attributes["fill"];
+                                            if(att != null){
+                                                //fill row with value
+                                                if (att.Value != ""){
+
+                                                    WorldEntity tid = WorldManager.getInstance().getWorldEntityByName(att.Value);
+
+                                                    for(x = 0; x < map.terrainGrid.GetUpperBound(0); x++){
+                                                        map.setCell(x, y, tid);
+                                                    }
+                                                }
+                                            }
+                                            else{
+                                                //parse CELLS
+                                                foreach(XmlNode cell in row.ChildNodes){
+                                                    att = cell.Attributes["fill"];
+                                                    if(att != null){
+                                                        map.setCell(x, y, WorldManager.getInstance().getWorldEntityByName(att.Value));
+                                                    }
+
+                                                    //goto next column
+                                                    x++;
+                                                }
+                                            }
+                                            //goto next row
+                                            y++;
+                                            x = 0;
+                                        }
+                                    }
+
+                                    break;
+                                #endregion
+
+                                #region PARSE MAP OBJECTS
+                                case "OBJECTS":
+                                    break;
+                                #endregion
+
+                                #region PARSE MAP ENTIIES
+                                case "ENTITIES":
+                                    break;
+                                #endregion
+
+                                default: break;
+                            }
+                        }
+
+                        //set the current map
+                        WorldManager.getInstance().currentMap = map;
+
+                        //Setting the flag back to false
+                        readingMapConfiguration = false;
+
+                        #endregion
+                    }
                     else if (readingProjectiles)
                     {
                         //TODO: PROJECTILES (?)
@@ -382,6 +532,47 @@ namespace EpicRPG.Managers
                     else if(readingItems){
                         //TODO: ITEMS
                         #region ITEMS
+                        //Iterating the itemIterator for an accurate ID
+                        itemIterator++;
+
+                        //Getting specific attributes
+                        XmlAttribute name = node.Attributes["name"],
+                                     value = node.Attributes["value"];
+
+                        string nameToSet = "Item " + itemIterator;
+                        long valueToSet = 0;
+
+                        if(name != null)
+                            nameToSet = name.Value;
+                        if (value != null)
+                            valueToSet = long.Parse(value.Value);
+                        node.Attributes.Remove(name);
+                        node.Attributes.Remove(value);
+
+                        string[] itemAttributes = new string[node.Attributes.Count * 2];
+
+                        //Getting the number of variable attributes for the item
+                        int numOfAttributes = node.Attributes.Count;
+
+                        //Looping over these attributes and adding them to the string array
+                        XmlAttribute newAttribute;
+                        for (int i = 0; i < numOfAttributes; i++)
+                        {
+                            newAttribute = node.Attributes[i];
+                            itemAttributes[i * 2] = newAttribute.Name;
+                            itemAttributes[(i * 2) + 1] = newAttribute.Value;
+                        }
+
+                        //TODO: ABILITIES/EFFECTS/WHATEVER
+
+                        //Building a new ItemConfiguration
+                        ItemConfiguration item = new ItemConfiguration(itemIterator, nameToSet, valueToSet, itemAttributes);
+
+                        //adding the item to the list
+                        itemList.Add(item);
+
+                        //reset flag
+                        readingItems = false;
                         #endregion
                     }
                     else
@@ -410,6 +601,13 @@ namespace EpicRPG.Managers
                 //Adding the graphic list to the texture bank
                 if((graphicsList != null) && (graphicsList.Count > 0))
                     GraphicsManager.getInstance().graphicsBank = graphicsList;
+
+                //Adding level configurations to the level manager
+                if ((levelList != null) && (levelList.Count > 0))
+                    LevelManager.getInstance().levelConfigurations = levelList;
+
+                if ((itemList != null) && (itemList.Count > 0))
+                    ItemManager.getInstance().itemList = itemList;
 
 
             }

@@ -15,7 +15,7 @@ namespace EpicRPG.Util
         //will pick how maany enemies are on the screen
         public static int EnemyOnScreen()
         {
-            return (RandomNumber(0, 2));
+            return RNG.getInstance().RandomNumber(0, 2);
         }
 
         //will pick the enemies location
@@ -31,7 +31,7 @@ namespace EpicRPG.Util
         //will have to add in crit chance modifier (luck?) later
         public static bool CritAttack()
         {
-            int hit = RandomNumber(0, 100);
+            int hit = RNG.getInstance().RandomNumber(0, 100);
             //int hit = this.RandomNumber(0, 100) + character.getLuck()
             if (hit >= 90)
                 return (true);
@@ -43,7 +43,7 @@ namespace EpicRPG.Util
         //same as crit chance, need to add 
         public static bool WeaponAbility()
         {
-            int use = RandomNumber(0, 100);
+            int use = RNG.getInstance().RandomNumber(0, 100);
             if (use >= 90)
                 return (true);
             else
@@ -53,7 +53,7 @@ namespace EpicRPG.Util
         //see if you run away
         public static bool RunAway()
         {
-            int run = RandomNumber(1,4);
+            int run = RNG.getInstance().RandomNumber(1,4);
             if(run >= 4);
                 return(false);   
         }

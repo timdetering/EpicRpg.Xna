@@ -45,9 +45,12 @@ namespace EpicRPG
         public EpicRPG()
         {
             instance = this;
+
+            this.Window.Title = "EPIC RPG";
+            this.Window.AllowUserResizing = true;
+
             OutputManager.getInstance().initializeGraphics(this);
             Content.RootDirectory = "Content";
-
             this.gameState = State.GameState.INITIALIZING;
         }
 

@@ -18,6 +18,8 @@ namespace EpicRPG.Managers
 
         public string contentRoot = "Content";
 
+        public bool drawOccupancyGrid = false;
+
         public List<string> configurationFiles;
 
         public void setConfigurationSetting(string setting, string value)
@@ -47,7 +49,7 @@ namespace EpicRPG.Managers
 
                 case "CONFIGURATIONFILE":
                     if (this.configurationFiles == null) this.configurationFiles = new List<string>();
-                    this.configurationFiles.Add(this.configRoot + "/" + this.configScheme + "/" + value);
+                    this.configurationFiles.Add(this.formatConfigurationFile(value));
                     break;
 
                 case "AUDIOENABLED":
@@ -64,8 +66,13 @@ namespace EpicRPG.Managers
 
                 case "DRAWOCCUPANCYGRID":
                 case "SHOWOCCUPANCYGRID":
+                    this.drawOccupancyGrid = bool.Parse(value);
                     break;
             }
+        }
+
+        public string formatConfigurationFile(string fileName){
+            return this.configRoot + "/" + this.configScheme + "/" + fileName;
         }
 
     }

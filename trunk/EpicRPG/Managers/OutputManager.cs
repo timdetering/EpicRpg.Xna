@@ -44,7 +44,10 @@ namespace EpicRPG.Managers
                 frameTimer++;
 
             this.spriteBatch.Begin(SpriteBlendMode.AlphaBlend);
+
+            WorldManager.getInstance().Draw();
             EntityManager.getInstance().RenderEntities();
+            
             switch (currentState){
                 case State.GameState.INITIALIZING:
                     break;
@@ -65,7 +68,6 @@ namespace EpicRPG.Managers
                     break;
 
                 case State.GameState.IN_PLAY_NORMAL:
-                    //WorldManager.getInstance().Draw();
                     break;
 
                 case State.GameState.PAUSE:

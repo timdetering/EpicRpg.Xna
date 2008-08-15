@@ -19,23 +19,17 @@ namespace EpicRPG.Managers
             //This will control the player's characters.
 
             //Listen for movement commands
-            if(InputManager.getInstance().MOVE_DOWN){
-                this.party.move(State.DirectionState.SOUTH);
-            }
-            else if (InputManager.getInstance().MOVE_UP){
-                this.party.move(State.DirectionState.NORTH);
-            }
-            if (InputManager.getInstance().MOVE_LEFT){
-                this.party.move(State.DirectionState.WEST);
-            }
-            else if (InputManager.getInstance().MOVE_RIGHT){
-                this.party.move(State.DirectionState.EAST);
-            }
+            this.party.move(
+                InputManager.getInstance().MOVE_UP,
+                InputManager.getInstance().MOVE_DOWN,
+                InputManager.getInstance().MOVE_RIGHT,
+                InputManager.getInstance().MOVE_LEFT
+            );
 
             //Listen for other input
             if(InputManager.getInstance().ACTION){
                 InputManager.getInstance().ACTION = false;
-                MessageManager.getInstance().DisplayMessage("Oh no!  The floor is black!", "What am I going to do?");
+                MessageManager.getInstance().DisplayMessage("You see " + this.party.party[0].whatIsInFrontOfMe());
             }
         }
     }

@@ -21,5 +21,10 @@ namespace EpicRPG.Entities
             this.passable = passable;
             this.texture = texture;
         }
+
+        public override string Describe()
+        {
+            return this.name;
+        }
     }
 }

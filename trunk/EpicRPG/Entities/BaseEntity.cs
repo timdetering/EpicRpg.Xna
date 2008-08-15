@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using EpicRPG.Util;
+using EpicRPG.Managers;
 
 namespace EpicRPG.Entities
 {
@@ -14,7 +15,16 @@ namespace EpicRPG.Entities
         public State.DirectionState orientation = State.DirectionState.SOUTH;
 
         public State.LocationType locationType = State.LocationType.PIXEL;
-        public Vector2 location;
+
+        protected Vector2 _location;
+        public Vector2 location{
+            get{return this._location;}
+            
+            set{
+                if (WorldManager.getInstance().requestMove(this.keyId, this._location, value))
+                    this._location = value;
+            }
+        }
 
         public BaseEntity(){
         
@@ -34,6 +44,10 @@ namespace EpicRPG.Entities
 
         public virtual void Draw(){
 
+        }
+
+        public virtual string Describe(){
+            return "?";
         }
     }
 }

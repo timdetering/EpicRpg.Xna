@@ -20,12 +20,11 @@ namespace EpicRPG.Managers
         private Menu currentMenu,
                      mainMenu,
                      newGameMenu,
-                     loadGameMenu,
-                     epicMenu;
+                     epicMenu,
+                     inventoryMenu;
 
         public void initializeMenuManager(){
-            //TODO: construct menus
-            this.mainMenu = new Menu("Epic RPG",
+            this.mainMenu = new Menu("Eternal Passage into Chaos",
                 new MenuItem("New Game", State.MenuState.NEW_GAME),
                 new MenuItem("Load Game", State.MenuState.NULL),
                 new MenuItem("Credits", State.MenuState.NULL),
@@ -37,8 +36,18 @@ namespace EpicRPG.Managers
                 new MenuItem("Cancel", State.MenuState.MAIN_MENU));
 
             this.epicMenu = new Menu("EPIC Menu",
+                new MenuItem("Inventory", State.MenuState.EPIC_MENU_INVENTORY),
+                new MenuItem("Abilities", State.MenuState.NULL),
+                new MenuItem("Party", State.MenuState.NULL),
+                new MenuItem("Save Game", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.NONE),
                 new MenuItem("Quit", State.MenuState.EXIT_GAME));
+
+            this.inventoryMenu = new Menu("Inventory",
+                new MenuItem("This", State.MenuState.NULL),
+                new MenuItem("That", State.MenuState.NULL),
+                new MenuItem("The other", State.MenuState.NULL),
+                new MenuItem("Back", State.MenuState.EPIC_MENU));
         }
 
         public void Update(GameTime gameTime){
@@ -63,6 +72,10 @@ namespace EpicRPG.Managers
 
                 case State.MenuState.EPIC_MENU:
                     this.setCurrentMenu(ref this.epicMenu);
+                    break;
+
+                case State.MenuState.EPIC_MENU_INVENTORY:
+                    this.setCurrentMenu(ref this.inventoryMenu);
                     break;
 
                 case State.MenuState.START_NEW_GAME:

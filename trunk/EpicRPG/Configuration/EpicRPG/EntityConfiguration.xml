@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <EntityConfiguration>
 	<Entity className="Hero" health="100" mana="200" strength="5">
-		<Component type="MovementComponent" speed="10"/>
+		<Component type="MovementComponent" speed="5"/>
 		<Component type="RenderComponent" graphics="Hero"/>
-		<Component type="InventoryComponent"/>
+		<Component type="InventoryComponent" capacity="10"/>
 		<Component type="AbilityComponent"/>
 	</Entity>
 
-	<Entity className = "blob" health ="5" mana="0" strength="1">
+	<Entity className="blob" health ="5" mana="0" strength="1">
 		<Component type="MovementComponent" speed="2"/>
 		<Component type="RenderComponent" graphics ="blob"/>
 	   </Entity>

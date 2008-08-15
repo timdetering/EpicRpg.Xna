@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ItemConfiguration>
-	<Item name="Red Potion" value="100">
-		<Ability />
-	</Item>
+	<Item name="Red Potion" value="100"/>
+	<Item name="Blue Potion" value="200"/>
+	<Item name="Holy Grail" value="100000"/>
+	<Item name="Excalibur" value="100023"/>
+	<Item name="Woman" value="10032"/>
+	<Item name="Wad of cash" value="1000000"/>
+	<Item name="Unspeakable Item" value="0"/>
 </ItemConfiguration>
