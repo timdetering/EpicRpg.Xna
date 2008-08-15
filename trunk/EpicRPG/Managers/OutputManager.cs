@@ -65,6 +65,7 @@ namespace EpicRPG.Managers
                     break;
 
                 case State.GameState.IN_PLAY_NORMAL:
+                    //WorldManager.getInstance().Draw();
                     break;
 
                 case State.GameState.PAUSE:

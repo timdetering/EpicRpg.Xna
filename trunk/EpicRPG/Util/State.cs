@@ -53,8 +53,12 @@ namespace EpicRPG.Util
 
         public enum TerrainType{
             GRASS,
+            SHORT_GRASS,
+            TALL_GRASS,
+            DIRT,
             TREE,
             //TODO: subclass stuff
+            ROAD,
             WATER,
             SHORE,
             WALL,

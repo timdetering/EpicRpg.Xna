@@ -17,13 +17,11 @@ namespace EpicRPG.Graphics
         public int frameWidth = 0;
         public int frameHeight = 0;
 
-        public GameTexture(Texture2D tex)
-        {
+        public GameTexture(Texture2D tex){
             this.texture = tex;
         }
 
-        public GameTexture(string textureName)
-        {
+        public GameTexture(string textureName){
             this.loadTexture(textureName);
             //TODO: Throw error if texture is null; image specified DNE
         }
