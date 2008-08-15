@@ -1,10 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <World>
 	<!-- NOTE that this is just a brainstorm file... -->
-
-	<Level name="level 1" location="" configurationDir="Level1">
-		<Include configurationFile="level1Entities.xml"/>
-		<Include configurationFile="level1Terrain.xml"/>
-		<!-- etc? -->
-	</Level>
+	<Level levelNum="1" name="Debug Room" mapFile="Maps/DebugRoom.xml"/>
 </World>

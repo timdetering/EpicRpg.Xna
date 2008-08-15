@@ -7,8 +7,9 @@ namespace EpicRPG.Entities.Items
 {
     public class Item : BaseEntity
     {
-        private long value;
-        private string name;
+        public long value;
+        public string name,
+                      description;
         
         //TODO: multiple abilities?
         public BaseAbility ability;
@@ -19,22 +20,6 @@ namespace EpicRPG.Entities.Items
 
         public void UseMe(){
             //ability.cast?
-        }
-
-        public long getValue(){
-            return this.value;
-        }
-
-        public void setValue(long v){
-            this.value = v;
-        }
-
-        public string getName(){
-            return this.name;
-        }
-
-        public void setName(string n){
-            this.name = n;
         }
     }
 }

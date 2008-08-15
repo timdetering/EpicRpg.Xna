@@ -69,6 +69,7 @@
     <Compile Include="Entities\Components\RenderComponent.cs" />
     <Compile Include="Entities\Configuration\ComponentConfiguration.cs" />
     <Compile Include="Entities\Configuration\EntityConfiguration.cs" />
+    <Compile Include="Entities\Configuration\ItemConfiguration.cs" />
     <Compile Include="Entities\GameEntity.cs" />
     <Compile Include="Entities\Items\Armor.cs" />
     <Compile Include="Entities\Items\Item.cs" />
@@ -89,6 +90,8 @@
     <Compile Include="Managers\FileManager.cs" />
     <Compile Include="Managers\GraphicsManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Managers\ItemManager.cs" />
+    <Compile Include="Managers\LevelManager.cs" />
     <Compile Include="Managers\MenuManager.cs" />
     <Compile Include="Managers\MessageManager.cs" />
     <Compile Include="Managers\PlayerManager.cs" />
@@ -106,22 +109,36 @@
     <Compile Include="Util\WritableObject.cs" />
     <Compile Include="World\BaseMap.cs" />
     <Compile Include="World\DebugRoom.cs" />
+    <Compile Include="World\LevelConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configuration\EpicRPG\AbilityConfiguration.xml" />
+    <Content Include="Configuration\EpicRPG\AbilityConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Configuration\EpicRPG\AudioConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configuration\EpicRPG\ItemConfiguration.xml" />
+    <Content Include="Configuration\EpicRPG\ItemConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Configuration\EpicRPG\GraphicsConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Configuration\EpicRPG\EntityConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Configuration\EpicRPG\TerrainConfiguration.xml" />
-    <Content Include="Configuration\EpicRPG\TerrainGraphicsConfiguration.xml" />
-    <Content Include="Configuration\EpicRPG\WorldConfiguration.xml" />
+    <Content Include="Configuration\EpicRPG\Maps\DebugRoom.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\EpicRPG\TerrainConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\EpicRPG\TerrainGraphicsConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Configuration\EpicRPG\WorldConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
     <Content Include="GameConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

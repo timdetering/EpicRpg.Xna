@@ -51,11 +51,18 @@ namespace EpicRPG.Managers
         }
 
         public void initializeNewGame(string heroName/*TODO: PARAMS*/){
+
+            LevelManager.getInstance().loadNextLevel();
+
             //TODO: BUILD HERO
             this.newHero = (GameEntity)EntityManager.getInstance().createNewEntity("Hero");
             this.newHero.name = heroName;
             this.newHero.location = new Vector2(50, 50);
             //TODO: w/e else
+
+            newHero.giveItem(ItemManager.getInstance().getItem(0));
+
+            EntityManager.getInstance().createNewEntity("blob").location = new Vector2(100, 100);
 
             PlayerManager.getInstance().initializePlayerManager(this.newHero);
 

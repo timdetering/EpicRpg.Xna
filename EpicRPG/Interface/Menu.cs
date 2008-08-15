@@ -24,11 +24,18 @@ namespace EpicRPG.Interface
                 this.menuItems.Add(items[i]);
             }
 
-            if (this.menuItems.Count > 0)
-                this.highlightedItem = 0;
+            if (this.menuItems.Count > 0){
+                for(int i = 0; i < this.menuItems.Count; i++){
+                    if (!this.menuItems[i].disabled){
+                        this.highlightedItem = i;
+                        break;
+                    }
+                }
+            }
         }
 
-        public void Draw(){
+        public void Draw()
+        {
             OutputManager.getInstance().Render_String(this.title, this.location, Color.BlueViolet);
 
             Vector2 nextLocation;
@@ -74,6 +81,9 @@ namespace EpicRPG.Interface
                     this.menuItems[this.highlightedItem].Deselect();
                     this.highlightedItem++;
                 }
+                else{
+                    this.highlightedItem = 0;
+                }
             } while (this.menuItems[this.highlightedItem].disabled);
         }
 
@@ -82,6 +92,9 @@ namespace EpicRPG.Interface
                 if (this.highlightedItem > 0){
                     this.menuItems[this.highlightedItem].Deselect();
                     this.highlightedItem--;
+                }
+                else{
+                    this.highlightedItem = this.menuItems.Count - 1;
                 }
             } while (this.menuItems[this.highlightedItem].disabled);
         }

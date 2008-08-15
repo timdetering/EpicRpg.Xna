@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <GameConfiguration>
-	<Setting contentRoot="C:\Users\Andy\Desktop\EPIC\EpicRPG\Content"/>
+	<Setting contentRoot="C:\Documents and Settings\Mitch\My Documents\Visual Studio 2005\Projects\EpicRPG\EpicRPG\Content"/>
 	<Setting configurationFile="EntityConfiguration.xml"/>
+	<Setting configurationFile="TerrainGraphicsConfiguration.xml"/>
 	<Setting configurationFile="GraphicsConfiguration.xml"/>
+	<Setting configurationFile="WorldConfiguration.xml"/>
+	<Setting configurationFile="ItemConfiguration.xml"/>
+	<Setting drawOccupancyGrid="true"/>
 </GameConfiguration>

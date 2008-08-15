@@ -36,6 +36,8 @@ namespace EpicRPG.Util
         public enum MenuState{
             MAIN_MENU,
             EPIC_MENU,
+            EPIC_MENU_INVENTORY,
+            EPIC_MENU_PARTY,
             NEW_GAME,
             START_NEW_GAME,
             LOAD_GAME,

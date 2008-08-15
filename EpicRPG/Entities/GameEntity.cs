@@ -4,6 +4,8 @@ using System.Text;
 using EpicRPG.Entities.Components;
 using Microsoft.Xna.Framework;
 using EpicRPG.Util;
+using EpicRPG.Managers;
+using EpicRPG.Entities.Items;
 
 namespace EpicRPG.Entities
 {
@@ -48,6 +50,45 @@ namespace EpicRPG.Entities
             }
 
             return null;
+        }
+
+        public string whatIsInFrontOfMe(){
+            switch(this.orientation){
+                case State.DirectionState.NORTH:
+                    return WorldManager.getInstance().describeEntityAtPixel(
+                        this.location.X, this.location.Y - WorldManager.getInstance().currentMap.CELL_HEIGHT
+                    );
+                case State.DirectionState.SOUTH:
+                    return WorldManager.getInstance().describeEntityAtPixel(
+                        this.location.X, this.location.Y + WorldManager.getInstance().currentMap.CELL_HEIGHT
+                    );
+                case State.DirectionState.EAST:
+                    return WorldManager.getInstance().describeEntityAtPixel(
+                        this.location.X + WorldManager.getInstance().currentMap.CELL_WIDTH, this.location.Y
+                    );
+                case State.DirectionState.WEST:
+                    return WorldManager.getInstance().describeEntityAtPixel(
+                        this.location.X - WorldManager.getInstance().currentMap.CELL_WIDTH, this.location.Y
+                    );
+                default: return "What's that?";
+            }
+        }
+
+        public override string Describe()
+        {
+            if (this.name != null)
+                return this.name;
+
+            return this.className;
+        }
+
+        public string giveItem(Item newItem){
+            BaseComponent invc = this.getComponent(State.ComponentType.INVENTORY);
+            if (invc != null)
+                if (((InventoryComponent)(invc)).addItem(newItem))
+                    return this.Describe() + " receives " + newItem.Describe();
+
+            return this.Describe() + " cannot carry any more items.";
         }
 
         public void heal(int value){
