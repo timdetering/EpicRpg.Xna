@@ -57,10 +57,8 @@ namespace EpicRPG.Managers
             //TODO: BUILD HERO
             this.newHero = (GameEntity)EntityManager.getInstance().createNewEntity("Hero");
             this.newHero.name = heroName;
-            this.newHero.location = new Vector2(50, 50);
+            this.newHero.location = new Vector2(200, 200);
             //TODO: w/e else
-
-            newHero.giveItem(ItemManager.getInstance().getItem(0));
 
             EntityManager.getInstance().createNewEntity("blob").location = new Vector2(100, 100);
 

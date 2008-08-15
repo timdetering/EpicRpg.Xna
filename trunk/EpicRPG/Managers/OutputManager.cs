@@ -83,8 +83,9 @@ namespace EpicRPG.Managers
 
         public void Render_Static(Texture2D texture, Vector2 onScreenLoc, Color colorMask){
             spriteBatch.Draw(texture,
-                new Rectangle((int)onScreenLoc.X - (texture.Width / 2),
-                    (int)(onScreenLoc.Y - (texture.Height * 0.80)),
+                new Rectangle(
+                    (int)(onScreenLoc.X),// - (texture.Width / 2)),
+                    (int)(onScreenLoc.Y),// - (texture.Height * 0.80)),
                     texture.Width, 
                     texture.Height),
                 colorMask);
@@ -95,8 +96,8 @@ namespace EpicRPG.Managers
         {
             this.spriteBatch.Draw(tex.texture, 
                 new Rectangle( 
-                    (int)(onScreen.X - (tex.frameWidth / 2)),
-                    (int)(onScreen.Y - (int)(tex.texture.Height * 0.80)), 
+                    (int)(onScreen.X),// - (tex.frameWidth / 2)),
+                    (int)(onScreen.Y),// - (int)(tex.texture.Height * 0.80)), 
                     tex.frameWidth, tex.texture.Height),
                 new Rectangle(currentFrameX, currentFrameY, tex.frameWidth,
                     tex.frameHeight), colorMask);

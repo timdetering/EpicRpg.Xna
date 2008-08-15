@@ -78,9 +78,13 @@
     <Compile Include="Entities\WorldEntity.cs" />
     <Compile Include="Graphics\GameTexture.cs" />
     <Compile Include="Graphics\GraphicsCollection.cs" />
+    <Compile Include="Interface\CharacterMenu.cs" />
+    <Compile Include="Interface\Debug\AddItemMenuItem.cs" />
+    <Compile Include="Interface\Debug\GlobalItemMenu.cs" />
     <Compile Include="Interface\Menu.cs" />
     <Compile Include="Interface\MenuItem.cs" />
     <Compile Include="Interface\MenuItemWithInput.cs" />
+    <Compile Include="Interface\PartyMenu.cs" />
     <Compile Include="Managers\AbilityManager.cs" />
     <Compile Include="Managers\AudioManager.cs" />
     <Compile Include="Managers\BattleManager.cs" />

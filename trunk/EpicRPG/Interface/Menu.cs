@@ -15,6 +15,8 @@ namespace EpicRPG.Interface
         public Vector2 location;
         public int itemSpacer = 15;
 
+        public Menu(){}
+
         public Menu(string title, params MenuItem[] items){
             this.menuItems = new List<MenuItem>(items.Length);
             this.title = title;
@@ -97,6 +99,10 @@ namespace EpicRPG.Interface
                     this.highlightedItem = this.menuItems.Count - 1;
                 }
             } while (this.menuItems[this.highlightedItem].disabled);
+        }
+
+        public virtual void refreshMenu(){
+
         }
     }
 }
