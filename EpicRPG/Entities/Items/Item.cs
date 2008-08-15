@@ -21,5 +21,10 @@ namespace EpicRPG.Entities.Items
         public void UseMe(){
             //ability.cast?
         }
+
+        public override string Describe()
+        {
+            return this.name;
+        }
     }
 }

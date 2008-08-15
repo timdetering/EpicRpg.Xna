@@ -38,6 +38,8 @@ namespace EpicRPG.Util
             EPIC_MENU,
             EPIC_MENU_INVENTORY,
             EPIC_MENU_PARTY,
+            EPIC_MENU_CHARACTER,
+            EPIC_MENU_CHARACTER_INVENTORY,
             NEW_GAME,
             START_NEW_GAME,
             LOAD_GAME,
@@ -45,7 +47,9 @@ namespace EpicRPG.Util
             CREDITS,
             EXIT_GAME,
             NONE,
-            NULL
+            NULL,
+            DEBUG_ALL_ITEMS,
+            DEBUG_ADD_ITEM,
         }
 
         public enum EntityState{
@@ -89,6 +93,13 @@ namespace EpicRPG.Util
         public enum LocationType{
             PIXEL,
             CELL
+        }
+
+        public enum PartyMember{
+            ONE,
+            TWO,
+            THREE,
+            FOUR,
         }
     }
 }

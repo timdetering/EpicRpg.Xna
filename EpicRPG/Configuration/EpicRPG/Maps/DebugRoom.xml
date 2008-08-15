@@ -3,6 +3,8 @@
 
 	<Map name="DebugRoom1" height="30" width="30">
 		<Terrain>
+			<Row fill=""/>
+			<Row fill=""/>
 			<Row>
 				<Cell fill=""/>
 				<Cell fill=""/>

@@ -5,6 +5,7 @@ using EpicRPG.Util;
 using Microsoft.Xna.Framework;
 using EpicRPG.Interface;
 using EpicRPG.Entities.Configuration;
+using EpicRPG.Interface.Debug;
 
 namespace EpicRPG.Managers
 {
@@ -17,11 +18,16 @@ namespace EpicRPG.Managers
             set{if(value != State.MenuState.NULL) this._menuState = value;}
         }
 
+        private bool refreshMenu = false;
+
         private Menu currentMenu,
                      mainMenu,
                      newGameMenu,
                      epicMenu,
-                     inventoryMenu;
+                     inventoryMenu,
+                     partyMenu,
+                     characterMenu,
+                     allItemsMenu;
 
         public void initializeMenuManager(){
             this.mainMenu = new Menu("Eternal Passage into Chaos",
@@ -36,9 +42,10 @@ namespace EpicRPG.Managers
                 new MenuItem("Cancel", State.MenuState.MAIN_MENU));
 
             this.epicMenu = new Menu("EPIC Menu",
+                new MenuItem("DEBUG: Items", State.MenuState.DEBUG_ALL_ITEMS),
                 new MenuItem("Inventory", State.MenuState.EPIC_MENU_INVENTORY),
                 new MenuItem("Abilities", State.MenuState.NULL),
-                new MenuItem("Party", State.MenuState.NULL),
+                new MenuItem("Party", State.MenuState.EPIC_MENU_PARTY),
                 new MenuItem("Save Game", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.NONE),
                 new MenuItem("Quit", State.MenuState.EXIT_GAME));
@@ -52,11 +59,11 @@ namespace EpicRPG.Managers
 =======
 
             this.inventoryMenu = new Menu("Inventory",
-                new MenuItem("This", State.MenuState.NULL),
-                new MenuItem("That", State.MenuState.NULL),
-                new MenuItem("The other", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.EPIC_MENU));
->>>>>>> .r29
+
+            this.partyMenu = new PartyMenu();
+
+            this.allItemsMenu = new GlobalItemMenu("All Items");
         }
 
         public void Update(GameTime gameTime){
@@ -87,6 +94,18 @@ namespace EpicRPG.Managers
                     this.setCurrentMenu(ref this.inventoryMenu);
                     break;
 
+                case State.MenuState.EPIC_MENU_PARTY:
+                    if(this.refreshMenu){
+                        this.refreshMenu = false;
+                        this.partyMenu.refreshMenu();
+                    }
+                    this.setCurrentMenu(ref this.partyMenu);
+                    break;
+
+                case State.MenuState.EPIC_MENU_CHARACTER_INVENTORY:
+                    this.setCurrentMenu(this.characterMenu);
+                    break;
+
                 case State.MenuState.START_NEW_GAME:
                     CampaignManager.getInstance().initializeNewGame(this.newGameMenu.getInputValueWithName("Name"));
                     break;
@@ -96,6 +115,14 @@ namespace EpicRPG.Managers
 
                 case State.MenuState.NONE:
                     EpicRPG.getInstance().CurrentState = State.GameState.IN_PLAY_NORMAL;
+                    break;
+
+                //DEBUGS
+                case State.MenuState.DEBUG_ADD_ITEM:
+                    goto case State.MenuState.NONE;
+
+                case State.MenuState.DEBUG_ALL_ITEMS:
+                    this.setCurrentMenu(ref this.allItemsMenu);
                     break;
 
                 default: break;
@@ -109,7 +136,10 @@ namespace EpicRPG.Managers
         }
 
         private void setCurrentMenu(ref Menu menu){
-            this.currentMenu = menu;
+            if(this.currentMenu != menu){
+                this.refreshMenu = true;
+                this.currentMenu = menu;
+            }
         }
     }
 }
