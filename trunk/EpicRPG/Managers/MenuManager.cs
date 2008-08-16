@@ -18,6 +18,10 @@ namespace EpicRPG.Managers
             set{if(value != State.MenuState.NULL) this._menuState = value;}
         }
 
+        public Menu currentCharacterMenu{
+            set { this.characterMenu = value; }
+        }
+
         private bool refreshMenu = false;
 
         private Menu currentMenu,
@@ -27,6 +31,7 @@ namespace EpicRPG.Managers
                      inventoryMenu,
                      partyMenu,
                      characterMenu,
+                     battleMenu,
                      allItemsMenu;
 
         public void initializeMenuManager(){
@@ -49,14 +54,12 @@ namespace EpicRPG.Managers
                 new MenuItem("Save Game", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.NONE),
                 new MenuItem("Quit", State.MenuState.EXIT_GAME));
-<<<<<<< .mine
 
             this.battleMenu = new Menu("Pick Action",
                 new MenuItem("Attack", State.MenuState.NONE),
                 new MenuItem("Magic", State.MenuState.NONE),
                 new MenuItem("Item", State.MenuState.NONE),
                 new MenuItem("Run", State.MenuState.NONE));
-=======
 
             this.inventoryMenu = new Menu("Inventory",
                 new MenuItem("Back", State.MenuState.EPIC_MENU));
@@ -102,8 +105,16 @@ namespace EpicRPG.Managers
                     this.setCurrentMenu(ref this.partyMenu);
                     break;
 
+                case State.MenuState.EPIC_MENU_CHARACTER:
+                    this.setCurrentMenu(ref this.characterMenu);
+                    break;
+
                 case State.MenuState.EPIC_MENU_CHARACTER_INVENTORY:
-                    this.setCurrentMenu(this.characterMenu);
+                    if(this.refreshMenu){
+                        this.refreshMenu = false;
+                        this.inventoryMenu = new InventoryMenu(((CharacterMenu)this.characterMenu).character);
+                    }
+                    this.setCurrentMenu(ref this.inventoryMenu);
                     break;
 
                 case State.MenuState.START_NEW_GAME:
