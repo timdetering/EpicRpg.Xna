@@ -54,8 +54,9 @@ namespace EpicRPG.Util
         public static bool RunAway()
         {
             int run = RandomNumber(1,4);
-            if(run >= 4);
-                return(false);   
+            if(run > 3)
+                return(false);
+            return true;
         }
     }
 }

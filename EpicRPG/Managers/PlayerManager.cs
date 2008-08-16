@@ -5,6 +5,7 @@ using EpicRPG.Util;
 using EpicRPG.Entities;
 using Microsoft.Xna.Framework;
 using EpicRPG.Entities.Components;
+using EpicRPG.Entities.Items;
 
 namespace EpicRPG.Managers
 {
@@ -28,8 +29,17 @@ namespace EpicRPG.Managers
 
             //Listen for other input
             if(InputManager.getInstance().ACTION){
+                //TEMP:
                 InputManager.getInstance().ACTION = false;
-                MessageManager.getInstance().DisplayMessage("You see " + this.party.party[0].whatIsInFrontOfMe());
+
+                if(RNG.RunAway()){
+                    Item i = ItemManager.getInstance().itemList[RNG.RandomNumber(0, ItemManager.getInstance().itemList.Count - 1)].buildItem();
+                    i.entityRef = this.party.party[0];
+                    MessageManager.getInstance().DisplayMessage("You find a " + i.name + ".");
+                    this.party.party[0].giveItem(i);
+                }
+                else
+                    MessageManager.getInstance().DisplayMessage("You see " + this.party.party[0].whatIsInFrontOfMe());
             }
         }
     }

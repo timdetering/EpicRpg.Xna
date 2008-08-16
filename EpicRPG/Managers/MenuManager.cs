@@ -35,7 +35,7 @@ namespace EpicRPG.Managers
                      allItemsMenu;
 
         public void initializeMenuManager(){
-            this.mainMenu = new Menu("Eternal Passage into Chaos",
+            this.mainMenu = new Menu("Eternal Progression into Chaos",
                 new MenuItem("New Game", State.MenuState.NEW_GAME),
                 new MenuItem("Load Game", State.MenuState.NULL),
                 new MenuItem("Credits", State.MenuState.NULL),
@@ -48,7 +48,7 @@ namespace EpicRPG.Managers
 
             this.epicMenu = new Menu("EPIC Menu",
                 new MenuItem("DEBUG: Items", State.MenuState.DEBUG_ALL_ITEMS),
-                new MenuItem("Inventory", State.MenuState.EPIC_MENU_INVENTORY),
+                //new MenuItem("Inventory", State.MenuState.EPIC_MENU_INVENTORY),
                 new MenuItem("Abilities", State.MenuState.NULL),
                 new MenuItem("Party", State.MenuState.EPIC_MENU_PARTY),
                 new MenuItem("Save Game", State.MenuState.NULL),
@@ -61,8 +61,9 @@ namespace EpicRPG.Managers
                 new MenuItem("Item", State.MenuState.NONE),
                 new MenuItem("Run", State.MenuState.NONE));
 
-            this.inventoryMenu = new Menu("Inventory",
-                new MenuItem("Back", State.MenuState.EPIC_MENU));
+            this.inventoryMenu = new InventoryMenu(null);
+            //this.inventoryMenu = new Menu("Inventory",
+            //    new MenuItem("Back", State.MenuState.EPIC_MENU));
 
             this.partyMenu = new PartyMenu();
 
@@ -112,7 +113,7 @@ namespace EpicRPG.Managers
                 case State.MenuState.EPIC_MENU_CHARACTER_INVENTORY:
                     if(this.refreshMenu){
                         this.refreshMenu = false;
-                        this.inventoryMenu = new InventoryMenu(((CharacterMenu)this.characterMenu).character);
+                        ((InventoryMenu)this.inventoryMenu).refreshMenu(((CharacterMenu)this.characterMenu).character);
                     }
                     this.setCurrentMenu(ref this.inventoryMenu);
                     break;
