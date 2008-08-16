@@ -32,6 +32,8 @@ namespace EpicRPG.Entities.Configuration
                 case "AudioComponent": bc = new AudioComponent(e); break;
                 case "MovementComponent": bc = new MovementComponent(e); break;
                 case "RenderComponent": bc = new RenderComponent(e); break;
+                case "WonderComponent":
+                case "WanderComponent": bc = new WanderComponent(e); break;
                 default: return false;
             }
 

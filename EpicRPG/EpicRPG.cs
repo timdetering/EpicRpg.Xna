@@ -133,6 +133,7 @@ namespace EpicRPG
 
                 case State.GameState.IN_PLAY:
                     PlayerManager.getInstance().Update(gameTime);
+                    EntityManager.getInstance().Update(gameTime);
                     //TODO: update generic in_play data
                     break;
 
