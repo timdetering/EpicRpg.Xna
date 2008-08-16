@@ -84,7 +84,20 @@ namespace EpicRPG.Entities
             return this.className;
         }
 
-        public string giveItem(Item newItem){
+        public void useItem(Item newItem){
+            MessageManager.getInstance().DisplayMessage(this.name + " uses " + newItem.name);
+            newItem.UseMe(this);
+
+            if(!newItem.constant){
+                this.removeItem(ref newItem);
+            }
+        }
+
+        public void removeItem(ref Item newItem){
+            ((InventoryComponent)this.getComponent(State.ComponentType.INVENTORY)).inventory.Remove(newItem);
+        }
+
+        public string getItem(Item newItem){
             BaseComponent invc = this.getComponent(State.ComponentType.INVENTORY);
             if (invc != null)
                 if (((InventoryComponent)(invc)).addItem(newItem))

@@ -18,6 +18,7 @@ namespace EpicRPG.Interface
         public override void Select(){
             base.Select();
             MenuManager.getInstance().currentCharacterMenu = this.charMenu;
+            PlayerManager.getInstance().party.currentMember = this.charMenu.character;
         }
     }
 }

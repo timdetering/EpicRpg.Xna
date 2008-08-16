@@ -10,6 +10,8 @@ namespace EpicRPG.Entities
     {
         public List<GameEntity> party;
 
+        public GameEntity currentMember;
+
         public Party(){
             this.party = new List<GameEntity>();
         }
@@ -17,6 +19,9 @@ namespace EpicRPG.Entities
         public Party(params GameEntity[] members) : this(){
             foreach (GameEntity newMember in members)
                 this.addMember(newMember);
+
+            if(this.party.Count > 0)
+                this.currentMember = this.party[0];
         }
 
         public void addMember(GameEntity newMember){

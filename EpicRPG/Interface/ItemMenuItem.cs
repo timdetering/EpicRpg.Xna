@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EpicRPG.Entities.Items;
 using EpicRPG.Util;
+using EpicRPG.Managers;
 
 namespace EpicRPG.Interface
 {
@@ -17,7 +18,7 @@ namespace EpicRPG.Interface
             base.Select();
 
             //TODO: this needs some work...
-            item.UseMe();
+            PlayerManager.getInstance().party.currentMember.useItem(this.item);
         }
     }
 }

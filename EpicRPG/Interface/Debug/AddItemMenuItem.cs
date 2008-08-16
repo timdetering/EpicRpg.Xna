@@ -17,7 +17,7 @@ namespace EpicRPG.Interface.Debug
 
         public override void Select()
         {
-            MessageManager.getInstance().DisplayMessage(PlayerManager.getInstance().party.party[0].giveItem(myItem.buildItem()));
+            MessageManager.getInstance().DisplayMessage(PlayerManager.getInstance().party.party[0].getItem(myItem.buildItem()));
         }
     }
 }

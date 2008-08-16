@@ -11,7 +11,8 @@ namespace EpicRPG.Entities.Items
         public long value;
         public string name,
                       description;
-        public GameEntity entityRef;
+        public bool constant = false;
+        //public GameEntity entityRef;
         
         //TODO: multiple abilities?
         public BaseAbility ability;
@@ -20,9 +21,8 @@ namespace EpicRPG.Entities.Items
 
         }
 
-        public void UseMe(){
-            //ability.cast?
-            MessageManager.getInstance().DisplayMessage(this.entityRef.name + " uses " + this.name);
+        public void UseMe(GameEntity e){
+            //TODO: & display info
         }
 
         public override string Describe()
