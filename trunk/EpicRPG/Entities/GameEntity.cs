@@ -18,6 +18,7 @@ namespace EpicRPG.Entities
             health,
             mana;
         private int strength;
+        private bool isEnemy;
 
         public GameEntity(){
             this.name = "";
@@ -25,13 +26,14 @@ namespace EpicRPG.Entities
             this.components = new List<BaseComponent>();
         }
         
-        public GameEntity(string className, string name, int health, int mana, int strength){
+        public GameEntity(string className, string name, int health, int mana, int strength, bool isEnemy){
             this.className = className;
             this.name = name;
             this.health = new Attribute(health, health);
             this.mana = new Attribute(mana, mana);
             this.strength = strength;
             this.components = new List<BaseComponent>();
+            this.isEnemy = isEnemy;
         }
 
         public override void Draw()
@@ -118,6 +120,12 @@ namespace EpicRPG.Entities
             return this.strength;
         }
 
-        
+        public override void Update(GameTime gameTime)
+        {
+            foreach (BaseComponent c in this.components)
+            {
+                c.Update(gameTime);
+            }
+        }
     }
 }

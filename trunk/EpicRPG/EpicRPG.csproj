@@ -67,6 +67,7 @@
     <Compile Include="Entities\Components\InventoryComponent.cs" />
     <Compile Include="Entities\Components\MovementComponent.cs" />
     <Compile Include="Entities\Components\RenderComponent.cs" />
+    <Compile Include="Entities\Components\WanderComponent.cs" />
     <Compile Include="Entities\Configuration\ComponentConfiguration.cs" />
     <Compile Include="Entities\Configuration\EntityConfiguration.cs" />
     <Compile Include="Entities\Configuration\ItemConfiguration.cs" />

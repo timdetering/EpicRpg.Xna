@@ -3,32 +3,8 @@
 
 	<Map name="DebugRoom1" height="30" width="30">
 		<Terrain>
-			<Row fill=""/>
-			<Row fill=""/>
 			<Row>
-				<Cell fill=""/>
-				<Cell fill=""/>
 				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-			</Row>
-			<Row>
-				<Cell fill=""/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
@@ -50,7 +26,7 @@
 				<Cell fill="grass"/>
 			</Row>
 			<Row>
-				<Cell fill=""/>
+				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
@@ -94,7 +70,6 @@
 				<Cell fill="grass"/>
 			</Row>
 			<Row>
-				<Cell fill=""/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
@@ -111,27 +86,6 @@
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-			</Row>
-			<Row>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill="grass"/>
-				<Cell fill=""/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
@@ -225,7 +179,6 @@
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 			</Row>
-			<Row fill=""/>
 			<Row>
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
@@ -248,18 +201,257 @@
 				<Cell fill="grass"/>
 				<Cell fill="grass"/>
 			</Row>
-			<Row fill=""/>
-			<Row fill=""/>
-			<Row fill=""/>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
+			<Row>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+				<Cell fill="grass"/>
+			</Row>
 		</Terrain>
-		
+
 		<Objects>
-			
+
 		</Objects>
-		
+
 		<Entities>
-			
+
 		</Entities>
 	</Map>
-	
+
 </BaseMap>

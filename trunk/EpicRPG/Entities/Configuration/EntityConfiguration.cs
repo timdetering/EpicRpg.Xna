@@ -17,6 +17,8 @@ namespace EpicRPG.Entities.Configuration
                    mana = 0,
                    strength = 1;
 
+        public bool isEnemy = false;
+
         //TODO: REMOVE SIZE?
         public Vector2 size = new Vector2(1, 1);
         public List<ComponentConfiguration> components = new List<ComponentConfiguration>();
@@ -34,6 +36,7 @@ namespace EpicRPG.Entities.Configuration
                     case "STRENGTH": health          = int.Parse(args[i + 1]);   break;
                     case "WIDTH":    size.X          = float.Parse(args[i + 1]); break;
                     case "HEIGHT":   size.Y          = float.Parse(args[i + 1]); break;
+                    case "ENEMY": isEnemy = bool.Parse(args[i + 1]); break;
                     default: break;
                 }
             }
@@ -50,7 +53,7 @@ namespace EpicRPG.Entities.Configuration
         }
 
         public GameEntity buildEntity(){
-            GameEntity e = new GameEntity(this.className, this.entityName, this.health, this.mana, this.strength);
+            GameEntity e = new GameEntity(this.className, this.entityName, this.health, this.mana, this.strength, this.isEnemy);
             
             this.components.ForEach(delegate(ComponentConfiguration cc)
             {
