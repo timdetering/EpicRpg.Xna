@@ -11,6 +11,7 @@ namespace EpicRPG.Entities.Configuration
         public string name,
                       description;
         public long value;
+        public bool constant;
         //TODO: ABILITIES
 
         public ItemConfiguration(int id, string name, long value, params string[] args){
@@ -21,7 +22,10 @@ namespace EpicRPG.Entities.Configuration
             //set all other properties that are given
             for(int i = 0; (i + 1) < args.Length; i += 2){
                 switch(args[i].ToUpper()){
-                    case "DESCRIPTION": description = args[i + 1];              break;
+                    case "DESCRIPTION":  description = args[i + 1];          break;
+
+                    case "CONSTANT":
+                    case "CONSTANTITEM": constant = bool.Parse(args[i + 1]); break;
                     default: break;
                 }
             }
@@ -32,6 +36,7 @@ namespace EpicRPG.Entities.Configuration
             item.name = name;
             item.description = description;
             item.value = value;
+            item.constant = constant;
             return item;
         }
     }

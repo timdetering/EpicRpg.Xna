@@ -33,8 +33,6 @@ namespace EpicRPG.Entities.Components
 
         public bool addItem(Item newItem){
             if(this.inventory.Count < this.inventory.Capacity){
-                if(this.entityRef is GameEntity)
-                    newItem.entityRef = (GameEntity)this.entityRef;
                 this.inventory.Add(newItem);
                 return true;
             }

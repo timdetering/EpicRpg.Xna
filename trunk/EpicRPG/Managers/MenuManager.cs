@@ -49,7 +49,7 @@ namespace EpicRPG.Managers
             this.epicMenu = new Menu("EPIC Menu",
                 new MenuItem("DEBUG: Items", State.MenuState.DEBUG_ALL_ITEMS),
                 //new MenuItem("Inventory", State.MenuState.EPIC_MENU_INVENTORY),
-                new MenuItem("Abilities", State.MenuState.NULL),
+                //new MenuItem("Abilities", State.MenuState.NULL),
                 new MenuItem("Party", State.MenuState.EPIC_MENU_PARTY),
                 new MenuItem("Save Game", State.MenuState.NULL),
                 new MenuItem("Back", State.MenuState.NONE),
@@ -62,8 +62,6 @@ namespace EpicRPG.Managers
                 new MenuItem("Run", State.MenuState.NONE));
 
             this.inventoryMenu = new InventoryMenu(null);
-            //this.inventoryMenu = new Menu("Inventory",
-            //    new MenuItem("Back", State.MenuState.EPIC_MENU));
 
             this.partyMenu = new PartyMenu();
 
