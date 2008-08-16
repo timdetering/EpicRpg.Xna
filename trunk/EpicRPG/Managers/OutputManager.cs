@@ -96,8 +96,8 @@ namespace EpicRPG.Managers
         {
             this.spriteBatch.Draw(tex.texture, 
                 new Rectangle( 
-                    (int)(onScreen.X),// - (tex.frameWidth / 2)),
-                    (int)(onScreen.Y),// - (int)(tex.texture.Height * 0.80)), 
+                    (int)(onScreen.X - (tex.frameWidth / 2)),// - (tex.frameWidth / 2)),
+                    (int)(onScreen.Y - (tex.frameHeight * 0.80)),// - (int)(tex.texture.Height * 0.80)), 
                     tex.frameWidth, tex.texture.Height),
                 new Rectangle(currentFrameX, currentFrameY, tex.frameWidth,
                     tex.frameHeight), colorMask);

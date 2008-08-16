@@ -25,7 +25,7 @@ namespace EpicRPG.Interface
             foreach(GameEntity e in this.party.party){
                 this.menuItems.Add(new PartyMenuItem(e));
             }
-            this.menuItems.Add(new MenuItem("Back", State.MenuState.NONE));
+            this.menuItems.Add(new MenuItem("Back", State.MenuState.EPIC_MENU));
 
             this.highlightedItem = 0;
         }
