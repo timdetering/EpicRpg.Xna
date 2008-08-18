@@ -37,28 +37,38 @@ namespace EpicRPG.Entities.Components
         //needs work
         public void Wander()
         {
-            int num = RNG.EnemyPos();
-            if(num == 0)
+            if (this.entityRef.location.X <= 10)
+                this.entityRef.location = new Vector2(this.entityRef.location.X + (10 * move), this.entityRef.location.Y);
+            else if (this.entityRef.location.X >= 300)
+                this.entityRef.location = new Vector2(this.entityRef.location.X - (10 * move), this.entityRef.location.Y);
+            else if (this.entityRef.location.Y <= 10)
+                this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y + (10 * move));
+            else if (this.entityRef.location.Y >= 300)
+                this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y - (10 * move));
+            else
             {
+                int num = RNG.EnemyPos();
+                if (num == 0)
+                {
+                }
+                if (num == 1)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y);
+                if (num == 2)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y);
+                if (num == 3)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y + move);
+                if (num == 4)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y - move);
+                if (num == 5)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y + move);
+                if (num == 6)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y - move);
+                if (num == 7)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y - move);
+                if (num == 8)
+                    this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y + move);
             }
-            if(num == 1)
-                this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y);
-            if(num == 2)
-                this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y);
-            if(num == 3)
-                this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y + move);
-            if(num == 4)
-                this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y - move);
-            if(num == 5)
-                this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y + move);
-            if(num == 6)
-                this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y - move);
-            if(num == 7)
-                this.entityRef.location = new Vector2(this.entityRef.location.X + move, this.entityRef.location.Y - move);
-            if(num == 8)
-                this.entityRef.location = new Vector2(this.entityRef.location.X - move, this.entityRef.location.Y + move);
         }
-
     }    
 }
 

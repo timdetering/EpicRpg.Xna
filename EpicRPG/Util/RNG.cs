@@ -18,8 +18,7 @@ namespace EpicRPG.Util
             return RandomNumber(0, 2);
         }
 
-        //will pick the enemies location
-        //need to work on this later
+        //used by wandering monsters to determine movement
         public static int EnemyPos()
         {
             return RandomNumber(0, 8);
