@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EpicRPG.Util
 {
-    public class RNG : Singleton<RNG>
+    public class RNG
     {
         public static int RandomNumber(int min, int max)
         {
@@ -20,12 +20,10 @@ namespace EpicRPG.Util
 
         //will pick the enemies location
         //need to work on this later
-        /*public static Vector2 EnemyPos()
+        public static int EnemyPos()
         {
-            int x = this.RandomNumber(min, max);
-            int y = this.RandomNumber(min, max);
-            
-        }*/
+            return RandomNumber(0, 8);
+        }
 
         //sees if regular attack crits
         //will have to add in crit chance modifier (luck?) later
