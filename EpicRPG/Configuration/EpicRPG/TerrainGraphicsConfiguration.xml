@@ -2,5 +2,18 @@
 <TerrainGraphicsConfiguration>
 	
 	<TerrianGraphicsSet name="grass" file="GrassTile1.png" passable="true"/>
+	<TerrianGraphicsSet name="openWater" file="OpenWater.png" passable="false"/>
+	<TerrianGraphicsSet name="topShore" file="RiverUp.png" passable="true"/>
+	<TerrianGraphicsSet name="bottomShore" file="RiverDown.png" passable="true"/>
+	<TerrianGraphicsSet name="rightShore" file="RiverRight.png" passable="true"/>
+	<TerrianGraphicsSet name="leftShore" file="RiverLeft.png" passable="true"/>
+	<TerrianGraphicsSet name="topRightShore" file="RiverUpperRightCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="topLeftShore" file="RiverUpperLeftCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="bottomRightShore" file="RiverLowerRightCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="bottomLeftShore" file="RiverLowerLeftCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="topRightWater" file="RiverOpenUpperRightCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="topLeftWater" file="RiverOpenUpperLeftCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="bottomRightWater" file="RiverOpenLowerRightCorner.png" passable="true"/>
+	<TerrianGraphicsSet name="bottomeLeftWater" file="RiverOpenLowerLeftCorner.png" passable="true"/>
 	
 </TerrainGraphicsConfiguration>
