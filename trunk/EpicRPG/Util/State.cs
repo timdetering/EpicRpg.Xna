@@ -31,7 +31,7 @@ namespace EpicRPG.Util
             INVENTORY,
             MOVEMENT,
             RENDER,
-            WONDER,
+            WANDER,
         }
 
         public enum MenuState{

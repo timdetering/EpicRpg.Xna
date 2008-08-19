@@ -11,7 +11,7 @@ namespace EpicRPG.Entities.Components
         public int move;
 
         public WanderComponent(BaseEntity e) : base(e){
-            this.type = State.ComponentType.WONDER;
+            this.type = State.ComponentType.WANDER;
         }
 
         public override BaseComponent setAttributes(List<KeyValuePair<string, string>> attributes)
@@ -37,13 +37,13 @@ namespace EpicRPG.Entities.Components
         //needs work
         public void Wander()
         {
-            if (this.entityRef.location.X <= 10)
+            if (this.entityRef.location.X <= 100)
                 this.entityRef.location = new Vector2(this.entityRef.location.X + (10 * move), this.entityRef.location.Y);
-            else if (this.entityRef.location.X >= 300)
+            else if (this.entityRef.location.X >= 1600)
                 this.entityRef.location = new Vector2(this.entityRef.location.X - (10 * move), this.entityRef.location.Y);
-            else if (this.entityRef.location.Y <= 10)
+            else if (this.entityRef.location.Y <= 100)
                 this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y + (10 * move));
-            else if (this.entityRef.location.Y >= 300)
+            else if (this.entityRef.location.Y >= 1600)
                 this.entityRef.location = new Vector2(this.entityRef.location.X, this.entityRef.location.Y - (10 * move));
             else
             {
